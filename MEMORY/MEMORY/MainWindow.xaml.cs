@@ -24,5 +24,9 @@ namespace MEMORY
         {
             InitializeComponent();
         }
+        public void Test()
+        {
+
+        }
     }
 }
