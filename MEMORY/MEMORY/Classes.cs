@@ -36,7 +36,26 @@ namespace MEMORY
     public class Game
     {
         Skins _skin;
+        GameDifficulty _gameDifficulty;
+        public List<Card> Cards { get; set; }
 
+        public Skins Skins
+        {
+            get { return _skin; }
+            private set { _skin = value; }
+        }
+
+        public GameDifficulty GameDifficulty
+        {
+            get { return _gameDifficulty; }
+            private set { _gameDifficulty = value; }
+        }
+
+        public Game(Skins skin, GameDifficulty gameDifficulty)
+        {
+            _skin = skin;
+            _gameDifficulty = gameDifficulty;
+        }
     }
 
     public class Card
@@ -61,6 +80,8 @@ namespace MEMORY
 
     public enum GameDifficulty
     {
-
+        easily,
+        normally,
+        hard
     }
 }
