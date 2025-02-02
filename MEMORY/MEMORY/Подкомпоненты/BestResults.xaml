@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MEMORY.Подкомпоненты"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="BestResults">
+      Title="BestResults" Background="{DynamicResource PagesBackground}">
 
     <Grid>
         

@@ -27,3 +27,7 @@ C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMO
 C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.csproj.CoreCompileInputs.cache
 C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.exe
 C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.pdb
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Темы\Standart.baml
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\App.baml
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Темы\Dark.baml
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Темы\Light.baml

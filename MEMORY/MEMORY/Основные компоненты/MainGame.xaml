@@ -7,10 +7,10 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainGame"
-      FontFamily="Fonts/Baymax.otf">
+      FontFamily="Fonts/Baymax.otf" Background="{DynamicResource GameBackground}">
     <DockPanel>
         <Grid DockPanel.Dock="Bottom" Height="50">
-            <Button FontSize="20" Margin="20,0,0,0" x:Name="ExitBt" Content="Выход" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Button Style="{DynamicResource ButtonStyle}" FontSize="20" Margin="20,0,0,0" x:Name="ExitBt" Content="Выход" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <Button FontSize="20" Margin="0,0,20,0" x:Name="RetyBt" Content="Заново" VerticalAlignment="Center" HorizontalAlignment="Right"/>
         </Grid>
         <Grid DockPanel.Dock="Top" Height="50">
