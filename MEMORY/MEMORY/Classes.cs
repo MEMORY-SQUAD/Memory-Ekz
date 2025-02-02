@@ -33,7 +33,7 @@ namespace MEMORY
     }
 
     //Класс игры, которая будет запускатся
-    public class Game
+    public class GameState
     {
         Skins _skin;
         GameDifficulty _gameDifficulty;
@@ -51,18 +51,12 @@ namespace MEMORY
             private set { _gameDifficulty = value; }
         }
 
-        public Game(Skins skin, GameDifficulty gameDifficulty)
+        public GameState(Skins skin, GameDifficulty gameDifficulty)
         {
             _skin = skin;
             _gameDifficulty = gameDifficulty;
         }
     }
-
-    public class Card
-    {
-
-    }
-
     //Темы
     public enum Themes
     {

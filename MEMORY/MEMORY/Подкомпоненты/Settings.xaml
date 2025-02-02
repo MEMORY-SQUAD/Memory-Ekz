@@ -4,11 +4,58 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MEMORY"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Settings">
+      mc:Ignorable="d"
+      Title="Settings" Height="339" Width="537">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!-- громкость -->
+        <Label Content="Громкость:" Margin="0,0,0,5"/>
+        <Slider x:Name="VolumeSlider" Grid.Row="1" Minimum="0" Maximum="100" Value="50" Width="200" Margin="0,0,0,10"/>
+
+        <!-- выбор темы -->
+        <Label Content="Тема:" Grid.Row="1" Grid.Column="0" Margin="0,40,0,0"/>
+        <ComboBox x:Name="ThemeComboBox" Grid.Row="1" Margin="60,40,0,0" VerticalAlignment="Top" SelectionChanged="ThemeComboBox_SelectionChanged">
+            <ComboBoxItem Content="Светлая"/>
+            <ComboBoxItem Content="Темная"/>
+        </ComboBox>
+        <!-- Кнопки выход и сохранить -->
+        <Button Content="Выход" Grid.Row="2" Margin="0,176,0,0" Padding="10,5" HorizontalAlignment="Left" Click="ExitButton_Click" Width="100">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="Black" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Content="Сохранить" Grid.Row="2" Margin="0,176,0,0"  Padding="10,5" HorizontalAlignment="Right" Click="ApplySettingsButton_Click" Grid.Column="1" Width="114">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="Black" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Page>

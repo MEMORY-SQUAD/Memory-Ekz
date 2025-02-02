@@ -1,0 +1,29 @@
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\MEMORY.exe.config
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\MEMORY.exe
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\MEMORY.pdb
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.csproj.AssemblyReference.cache
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Card.g.cs
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MainWindow.g.cs
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Основные компоненты\MainGame.g.cs
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Основные компоненты\MainMenu.g.cs
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\Authors.g.cs
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\BestResults.g.cs
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\NewGame.g.cs
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\Settings.g.cs
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\App.g.cs
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY_MarkupCompile.cache
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY_MarkupCompile.lref
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Card.baml
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MainWindow.baml
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Основные компоненты\MainGame.baml
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Основные компоненты\MainMenu.baml
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\Authors.baml
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\BestResults.baml
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\NewGame.baml
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\Settings.baml
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.g.resources
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.Properties.Resources.resources
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.csproj.GenerateResource.cache
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.csproj.CoreCompileInputs.cache
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.exe
+C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.pdb

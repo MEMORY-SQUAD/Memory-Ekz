@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Card.xaml.cs">
+      <DependentUpon>Card.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Основные компоненты\MainGame.xaml.cs">
       <DependentUpon>MainGame.xaml</DependentUpon>
     </Compile>
@@ -64,12 +67,19 @@
     <Compile Include="Подкомпоненты\Authors.xaml.cs">
       <DependentUpon>Authors.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Подкомпоненты\BestResults.xaml.cs">
+      <DependentUpon>BestResults.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Подкомпоненты\NewGame.xaml.cs">
       <DependentUpon>NewGame.xaml</DependentUpon>
     </Compile>
     <Compile Include="Подкомпоненты\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Page Include="Card.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -92,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Подкомпоненты\Authors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Подкомпоненты\BestResults.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

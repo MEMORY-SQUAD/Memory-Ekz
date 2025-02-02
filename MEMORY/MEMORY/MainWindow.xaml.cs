@@ -20,9 +20,18 @@ namespace MEMORY
     /// </summary>
     public partial class MainWindow : Window
     {
+        GameState gameState;
         public MainWindow()
         {
             InitializeComponent();
+            gameState = new GameState(Skins.ProgrammingLanguages, GameDifficulty.hard);
+            MainMenu mainMenu = new MainMenu(this, gameState);
+            MainFrame.Navigate(mainMenu);
+        }
+        public void StartGame()
+        {
+            MainGame mainMenu = new MainGame(gameState);
+            MainFrame.Navigate(mainMenu);
         }
     }
 }
