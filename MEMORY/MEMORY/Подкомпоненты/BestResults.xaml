@@ -15,7 +15,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Лучшие результаты" FontSize="40" Margin="15"/>
+            <TextBlock Style="{DynamicResource TottalTbStyle}" Text="Лучшие результаты" FontSize="40" Margin="15"/>
 
         </Grid>
     </Border>

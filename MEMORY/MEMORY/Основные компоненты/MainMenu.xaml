@@ -21,7 +21,7 @@
 				<RowDefinition/>
 			</Grid.RowDefinitions>
 
-            <TextBlock Text="MEMORY" FontSize="100" FontFamily="./Fonts/Baymax.otf"/>
+            <TextBlock Foreground="{DynamicResource TotalForeGround}" Text="MEMORY" FontSize="100" FontFamily="./Fonts/Baymax.otf"/>
 
 			<Border Grid.Row="1" Margin="10" CornerRadius="30" Background="{DynamicResource BorderMenuBackground}">
 				<Grid>

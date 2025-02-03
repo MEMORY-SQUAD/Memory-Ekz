@@ -22,19 +22,17 @@ namespace MEMORY
 	{
 		MainWindow _mainWindow;
 		BestResults _bestResults;
-		public MainMenu(MainWindow mainWindow, GameState gameState)
+		public MainMenu(MainWindow mainWindow)
 		{
 			_mainWindow = mainWindow;
 			InitializeComponent();
 			_bestResults = new BestResults();
-
             MainFrame.Navigate(_bestResults);
-
         }
 
 		private void StartBt_Click(object sender, RoutedEventArgs e)
 		{
-			MainFrame.Navigate(new NewGame());
+			MainFrame.Navigate(new NewGame(_mainWindow));
 		}
 
 		private void ContinueBt_Click(object sender, RoutedEventArgs e)

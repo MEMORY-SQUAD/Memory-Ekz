@@ -60,13 +60,5 @@ namespace MEMORY
 
             ((ScaleTransform)card.RenderTransform).BeginAnimation(ScaleTransform.ScaleXProperty, scaleToZero);
         }
-        private void Card_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (sender is Grid Card)
-            {
-
-            }
-
-        }
     }
 }

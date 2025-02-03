@@ -17,18 +17,18 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Margin="10" Text="Сложность" FontSize="50" HorizontalAlignment="Center"/>
+            <TextBlock Style="{DynamicResource TottalTbStyle}" Margin="10" Text="Сложность" FontSize="50" HorizontalAlignment="Center"/>
 
             <Border Grid.Row="1" Height="auto" HorizontalAlignment="Center">
                 <StackPanel>
-                    <Button Background="Green" FontSize="20" Content="Лёгкая" Margin="20"/>
-                    <Button Background="Yellow" FontSize="20" Content="Средняя" Margin="20"/>
-                    <Button Background="Red" FontSize="20" Content="Сложная" Margin="20"/>
+                    <Button Style="{DynamicResource DifficultyButtonStyle}" Background="Green" FontSize="20" Content="Лёгкая" Margin="20" Click="Button_Click_1"/>
+                    <Button Style="{DynamicResource DifficultyButtonStyle}" Background="Yellow" FontSize="20" Content="Средняя" Margin="20" Click="Button_Click_2"/>
+                    <Button Style="{DynamicResource DifficultyButtonStyle}" Background="Red" FontSize="20" Content="Сложная" Margin="20" Click="Button_Click_3"/>
                 </StackPanel>
             </Border>
 
-            <Button Content="Выход"  Grid.Row="2" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Margin="20"/>
-            <Button Content="Начать"  Grid.Row="2" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Margin="20"/>
+            <Button Click="ExutBt_Click" Content="Выход" x:Name="ExutBt"  Grid.Row="2" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Margin="20"/>
+            <Button Click="StartBt_Click" Content="Начать" x:Name="StartBt"  Grid.Row="2" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Margin="20"/>
         </Grid>
     </Border>
 </Page>

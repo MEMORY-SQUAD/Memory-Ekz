@@ -28,6 +28,7 @@ namespace MEMORY
 		private List<Card> _cards;
 		private int _pairsFound;
 		private int _gridSize;
+		private bool isFliped = false;
 		public MainGame(GameState gameState)
 		{
 			InitializeComponent();
@@ -40,12 +41,14 @@ namespace MEMORY
         }
 		private async void ShowCards()
         {
+			this.IsHitTestVisible = false;
             await Task.Delay(1000);
             foreach (Card card in _cards)
                 card.Flip();
             await Task.Delay(1000);
             foreach (Card card in _cards)
 				card.Flip();
+            this.IsHitTestVisible = true;
         }
 
 		private void StartGame()
@@ -145,7 +148,7 @@ namespace MEMORY
 
 
 		}
-		private void Card_MouseDown(object sender, MouseButtonEventArgs e)
+		private async void Card_MouseDown(object sender, MouseButtonEventArgs e)
 		{
 			var card = sender as Card;
 
@@ -161,15 +164,17 @@ namespace MEMORY
 			else
 			{
 				_secondCard = card;
-				CheckForMatch();
+                await Task.Delay(1000);
+                CheckForMatch();
 			}
 		}
 		private void CheckForMatch()
 		{
 			if (_firstCard.Tag.ToString() == _secondCard.Tag.ToString())
 			{
-				_firstCard.Visibility = Visibility.Hidden;
-				_secondCard.Visibility = Visibility.Hidden;
+				GameGrid.Children.Remove(_firstCard);
+				GameGrid.Children.Remove(_secondCard);
+
 				_pairsFound++;
 
 				if (_pairsFound == _gridSize / 2)
@@ -179,7 +184,6 @@ namespace MEMORY
 			}
 			else
 			{
-				MessageBox.Show("Не совпало!");
 				_firstCard.Flip();
 				_secondCard.Flip();
 			}
@@ -191,5 +195,11 @@ namespace MEMORY
 		{
 
 		}
-	}
+
+        private void Page_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+			if(isFliped)
+				e.Handled = true;
+        }
+    }
 }

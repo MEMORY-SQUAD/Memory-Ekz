@@ -20,10 +20,43 @@ namespace MEMORY
     /// </summary>
     public partial class NewGame : Page
     {
-        MainWindow 
+        MainWindow _mainWindow;
+        GameState _gameState;
         public NewGame(MainWindow mainWindow)
         {
             InitializeComponent();
+            StartBt.Background = Brushes.Green;
+            _gameState = new GameState(Skins.Standart, GameDifficulty.easily);
+            _gameState.GameDifficulty = GameDifficulty.easily;
+            _mainWindow = mainWindow;
+        }
+
+        private void ExutBt_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void StartBt_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.StartNewGame(_gameState);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            StartBt.Background = Brushes.Green;
+            _gameState.GameDifficulty = GameDifficulty.easily;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            StartBt.Background = Brushes.Yellow;
+            _gameState.GameDifficulty = GameDifficulty.normally;
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            StartBt.Background = Brushes.Red;
+            _gameState.GameDifficulty = GameDifficulty.hard;
         }
     }
 }

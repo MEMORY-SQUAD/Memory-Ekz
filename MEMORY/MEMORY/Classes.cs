@@ -48,7 +48,7 @@ namespace MEMORY
         public GameDifficulty GameDifficulty
         {
             get { return _gameDifficulty; }
-            private set { _gameDifficulty = value; }
+            set { _gameDifficulty = value; }
         }
 
         public GameState(Skins skin, GameDifficulty gameDifficulty)

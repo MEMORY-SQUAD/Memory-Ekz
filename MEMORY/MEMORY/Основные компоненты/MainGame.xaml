@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainGame"
-      FontFamily="Доп эллементы/Baymax.otf" Background="{DynamicResource GameBackground}">
+      FontFamily="Доп эллементы/Baymax.otf" Background="{DynamicResource GameBackground}" MouseDown="Page_MouseDown">
     <DockPanel>
         <Grid DockPanel.Dock="Bottom" Height="50">
             <Button Style="{DynamicResource ButtonStyle}" FontSize="20" Margin="20,0,0,0" x:Name="ExitBt" Content="Выход" VerticalAlignment="Center" HorizontalAlignment="Left"/>

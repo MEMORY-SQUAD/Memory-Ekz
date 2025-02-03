@@ -51,8 +51,16 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="DifficultyButtonStyle" TargetType="Button"/>
+    <Style x:Key="TottalTbStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource TotalForeGround}"/>
+    </Style>
+
+
     <SolidColorBrush x:Key="MainMenuBackground" Color="White"/>
     <SolidColorBrush x:Key="BorderMenuBackground" Color="AliceBlue"/>
     <SolidColorBrush x:Key="PagesBackground" Color="AliceBlue"/>
     <SolidColorBrush x:Key="GameBackground" Color="AliceBlue"/>
+    
+    <SolidColorBrush x:Key="TotalForeGround" Color="Black"/>
 </ResourceDictionary>

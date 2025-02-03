@@ -21,8 +21,6 @@ namespace MEMORY
     /// </summary>
     public partial class MainWindow : Window
     {
-        GameState gameState;
-
         MainGame currentGame;
         MainMenu menu;
 
@@ -30,7 +28,7 @@ namespace MEMORY
         {
             InitializeComponent();
 
-            menu = new MainMenu(this, gameState);
+            menu = new MainMenu(this);
             MainFrame.Navigate(menu);
 
 
@@ -56,7 +54,7 @@ namespace MEMORY
             //    File.Delete(tempFilePath);
             //};
         }
-        public void StartNewGame()
+        public void StartNewGame(GameState gameState)
         {
             currentGame = new MainGame(gameState);
             MainFrame.Navigate(currentGame);
