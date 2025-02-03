@@ -20,7 +20,8 @@ namespace MEMORY
     /// </summary>
     public partial class NewGame : Page
     {
-        public NewGame()
+        MainWindow 
+        public NewGame(MainWindow mainWindow)
         {
             InitializeComponent();
         }
