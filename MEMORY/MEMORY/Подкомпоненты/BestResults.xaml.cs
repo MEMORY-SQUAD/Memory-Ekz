@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MEMORY.Подкомпоненты
+namespace MEMORY
 {
     /// <summary>
     /// Логика взаимодействия для BestResults.xaml

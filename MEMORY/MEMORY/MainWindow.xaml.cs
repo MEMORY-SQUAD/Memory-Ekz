@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,17 +22,52 @@ namespace MEMORY
     public partial class MainWindow : Window
     {
         GameState gameState;
+
+        MainGame currentGame;
+        MainMenu menu;
+
         public MainWindow()
         {
             InitializeComponent();
-            gameState = new GameState(Skins.ProgrammingLanguages, GameDifficulty.hard);
-            MainMenu mainMenu = new MainMenu(this, gameState);
-            MainFrame.Navigate(mainMenu);
+
+            menu = new MainMenu(this, gameState);
+            MainFrame.Navigate(menu);
+
+
+            //Properties.Resources.ResourceManager.;
+
+            //gameState = new GameState(Skins.ProgrammingLanguages, GameDifficulty.hard);
+            //MainMenu mainMenu = new MainMenu(this, gameState);
+            //MainFrame.Navigate(mainMenu);
+            //byte[] audioData = Properties; // Замените "audio" на имя вашего ресурса
+
+            //// Создаем временный файл
+            //string tempFilePath = System.IO.Path.GetTempFileName();
+            //File.WriteAllBytes(tempFilePath, audioData);
+
+            //// Создаем MediaPlayer и воспроизводим аудио
+            //MediaPlayer mediaPlayer = new MediaPlayer();
+            //mediaPlayer.Open(new Uri(tempFilePath));
+            //mediaPlayer.Play();
+
+            //// Очистка временного файла после завершения воспроизведения
+            //mediaPlayer.MediaEnded += (s, e) =>
+            //{
+            //    File.Delete(tempFilePath);
+            //};
         }
-        public void StartGame()
+        public void StartNewGame()
         {
-            MainGame mainMenu = new MainGame(gameState);
-            MainFrame.Navigate(mainMenu);
+            currentGame = new MainGame(gameState);
+            MainFrame.Navigate(currentGame);
+        }
+        public void ContinueGame()
+        {
+            MainFrame.Navigate(currentGame);
+        }
+        public void BackMenu()
+        {
+            MainFrame.Navigate(menu);
         }
     }
 }

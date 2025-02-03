@@ -44,7 +44,7 @@
 			</Grid>
 			
 			<!-- Кнопки выход и сохранить -->
-			<Button Style="{DynamicResource ButtonStyle}" FontSize="20" Content="Выход" Grid.Row="1" Margin="10" Padding="10,5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="ExitButton_Click" Width="100"/>
+			<Button Style="{DynamicResource ButtonStyle}" FontSize="20" Content="Назад" Grid.Row="1" Margin="10" Padding="10,5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="ExitButton_Click" Width="100"/>
 			<Button Style="{DynamicResource ButtonStyle}" FontSize="20" Content="Сохранить" Grid.Row="1" Margin="10"  Padding="10,5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="ApplySettingsButton_Click" Grid.Column="1" Width="114"/>
 
 		</Grid>

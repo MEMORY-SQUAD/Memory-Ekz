@@ -6,9 +6,11 @@
       xmlns:local="clr-namespace:MEMORY"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Authors" Background="{DynamicResource PagesBackground}">
+      Title="Authors">
 
-    <Grid>
-        
-    </Grid>
+    <Border CornerRadius="20" Background="{DynamicResource PagesBackground}">
+        <Grid Margin="50">
+            
+        </Grid>
+    </Border>
 </Page>

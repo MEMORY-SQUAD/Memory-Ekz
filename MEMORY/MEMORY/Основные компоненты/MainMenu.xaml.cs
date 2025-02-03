@@ -21,11 +21,16 @@ namespace MEMORY
 	public partial class MainMenu : Page
 	{
 		MainWindow _mainWindow;
+		BestResults _bestResults;
 		public MainMenu(MainWindow mainWindow, GameState gameState)
 		{
 			_mainWindow = mainWindow;
 			InitializeComponent();
-		}
+			_bestResults = new BestResults();
+
+            MainFrame.Navigate(_bestResults);
+
+        }
 
 		private void StartBt_Click(object sender, RoutedEventArgs e)
 		{
@@ -35,7 +40,7 @@ namespace MEMORY
 		private void ContinueBt_Click(object sender, RoutedEventArgs e)
 		{
 
-		}
+        }
 
 		private void SettingsBt_Click(object sender, RoutedEventArgs e)
 		{
@@ -53,5 +58,10 @@ namespace MEMORY
 			if (result == MessageBoxResult.Yes) 
 				_mainWindow.Close();
 		}
-	}
+
+        private void Results_Click(object sender, RoutedEventArgs e)
+        {
+			MainFrame.Navigate(_bestResults);
+        }
+    }
 }
