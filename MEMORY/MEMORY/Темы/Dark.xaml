@@ -12,6 +12,7 @@
         <Setter Property="Background" Value="White" />
         <Setter Property="Foreground" Value="Gray" />
         <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="FontSize" Value="20"/>
     </Style>
     <Style x:Key="MenuBtStyle" TargetType="Button">
         <Setter Property="Margin" Value="5,25,5,25"/>

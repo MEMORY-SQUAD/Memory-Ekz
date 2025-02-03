@@ -6,11 +6,11 @@
 	  xmlns:local="clr-namespace:MEMORY"
 	  mc:Ignorable="d"
 	  Title="Settings"
-      Height="500" Width="1500">
+      Height="800" Width="1200">
 	<Border CornerRadius="20" Background="{DynamicResource PagesBackground}">
 		<Grid Margin="50">
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             
@@ -27,16 +27,16 @@
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
 				<!-- громкость звуков -->
-                <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Громкость звуков:" Margin="10"/>
+                <TextBlock FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Громкость звуков:" Margin="10"/>
 				<Slider x:Name="VolumeSlider" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" Minimum="0" Maximum="100" Value="50" Width="500" Margin="10"/>
 
-                <!-- громкость звуков -->
-                <TextBlock FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Громкость звуков:" Margin="10"/>
-                <Slider x:Name="VolumeSoundSlider" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" Minimum="0" Maximum="100" Value="50" Width="500" Margin="10"/>
+                <!-- громкость Музыки -->
+                <TextBlock FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Text="Громкость музыки:" Margin="10"/>
+                <Slider x:Name="VolumeSoundSlider" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" Minimum="0" Maximum="100" Value="50" Width="500" Margin="10"/>
 
                 <!-- выбор темы -->
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Text="Тема:" Grid.Row="1" Grid.Column="0" Margin="20"/>
-				<ComboBox x:Name="ThemeComboBox" Width="400" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" Margin="40" VerticalAlignment="Top" SelectionChanged="ThemeComboBox_SelectionChanged">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Text="Тема:" Grid.Row="2" Grid.Column="0" Margin="20"/>
+				<ComboBox x:Name="ThemeComboBox" Width="400" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Margin="40" VerticalAlignment="Top" SelectionChanged="ThemeComboBox_SelectionChanged">
 					<ComboBoxItem Content="Стандартная"/>
 					<ComboBoxItem Content="Светлая"/>
 					<ComboBoxItem Content="Темная"/>

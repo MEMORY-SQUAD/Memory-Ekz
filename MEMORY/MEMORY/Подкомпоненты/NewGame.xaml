@@ -6,9 +6,29 @@
       xmlns:local="clr-namespace:MEMORY"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="NewGame" Background="{DynamicResource PagesBackground}">
+      Title="NewGame"
+      Height="800" Width="1200">
 
-    <Grid>
-        
-    </Grid>
+    <Border CornerRadius="20" Background="{DynamicResource PagesBackground}">
+        <Grid Margin="50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Margin="10" Text="Сложность" FontSize="50" HorizontalAlignment="Center"/>
+
+            <Border Grid.Row="1" Height="auto" HorizontalAlignment="Center">
+                <StackPanel>
+                    <Button Background="Green" FontSize="20" Content="Лёгкая" Margin="20"/>
+                    <Button Background="Yellow" FontSize="20" Content="Средняя" Margin="20"/>
+                    <Button Background="Red" FontSize="20" Content="Сложная" Margin="20"/>
+                </StackPanel>
+            </Border>
+
+            <Button Content="Выход"  Grid.Row="2" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Margin="20"/>
+            <Button Content="Начать"  Grid.Row="2" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Margin="20"/>
+        </Grid>
+    </Border>
 </Page>
