@@ -23,11 +23,23 @@ namespace MEMORY
     {
         //настройки сохраняются в файл, при загрузке берутся там же
         private string settingsFilePath = "settings.txt";
+        private Themes _firstTheme;
         public Settings()
         {
             InitializeComponent();
             LoadSettings();
+            LoadThemes();
         }
+
+        private void LoadThemes()
+        {
+            List<string> strings = new List<string> { "Стандартная", "Светлая", "Тёмная" };
+            List<Themes> thm = new List<Themes> { Themes.Standart, Themes.Light, Themes.Datk };
+            for(int  i = 0; i < strings.Count; i++) 
+                ThemeComboBox.Items.Add(new ComboBoxItem { Content = strings[i], Tag = thm[i]});
+            ThemeComboBox.SelectedIndex = 0;
+        }
+
         private void LoadSettings()
         {
             if (File.Exists(settingsFilePath))
@@ -66,28 +78,34 @@ namespace MEMORY
                 writer.WriteLine(((ComboBoxItem)ThemeComboBox.SelectedItem).Content);
             }
         }
-        private void SetDarkTheme()
-        {
-            //логика для установки тёмной темы
-        }
-        private void SetLightTheme()
-        {
-            //логика для установки светлой темы
-        }
         private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ThemeComboBox.SelectedItem is ComboBoxItem selectedItem)
             {
-                string selectedTheme = selectedItem.Content.ToString();
-                if (selectedTheme == "Темная")
+                switch(selectedItem.Tag)
                 {
-                    SetDarkTheme();
-                }
-                else if (selectedTheme == "Светлая")
-                {
-                    SetLightTheme();
+                    case Themes.Standart:
+                        Uri uriStandart = new Uri("Темы\\Standart.xaml", UriKind.Relative);
+                        ResourceDictionary resourceDictStandart = Application.LoadComponent(uriStandart) as ResourceDictionary;
+                        Application.Current.Resources.Clear();
+                        Application.Current.Resources.MergedDictionaries.Add(resourceDictStandart);
+
+                        break;
+                    case Themes.Light:
+                        Uri uriLight = new Uri("Темы\\Light.xaml", UriKind.Relative);
+                        ResourceDictionary resourceDictLight = Application.LoadComponent(uriLight) as ResourceDictionary;
+                        Application.Current.Resources.Clear();
+                        Application.Current.Resources.MergedDictionaries.Add(resourceDictLight);
+                        break;
+                    case Themes.Datk:
+                        Uri uriDatk = new Uri("Темы\\Dark.xaml", UriKind.Relative);
+                        ResourceDictionary resourceDictDatk = Application.LoadComponent(uriDatk) as ResourceDictionary;
+                        Application.Current.Resources.Clear();
+                        Application.Current.Resources.MergedDictionaries.Add(resourceDictDatk);
+                        break;
                 }
             }
+
         }
         private void ApplySettingsButton_Click(object sender, RoutedEventArgs e)
         {

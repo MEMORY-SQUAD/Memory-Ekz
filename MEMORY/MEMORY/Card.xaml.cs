@@ -27,7 +27,7 @@ namespace MEMORY
         public int Value
         {
             get { return _value; }
-            set { TBValue.Text = value.ToString(); }
+            set { _value = value; TBValue.Text = value.ToString(); }
         }
         public Card()
         {

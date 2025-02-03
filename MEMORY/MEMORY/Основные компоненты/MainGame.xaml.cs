@@ -29,6 +29,7 @@ namespace MEMORY
 		private int _pairsFound;
 		private int _gridSize;
 		private bool isFliped = false;
+		private bool turn = false;
 		public MainGame(GameState gameState)
 		{
 			InitializeComponent();
@@ -42,10 +43,10 @@ namespace MEMORY
 		private async void ShowCards()
         {
 			this.IsHitTestVisible = false;
-            await Task.Delay(1000);
+            await Task.Delay(100);
             foreach (Card card in _cards)
                 card.Flip();
-            await Task.Delay(1000);
+            await Task.Delay(10000);
             foreach (Card card in _cards)
 				card.Flip();
             this.IsHitTestVisible = true;
@@ -114,7 +115,7 @@ namespace MEMORY
 			{
 				List<int> listValue = new List<int>();
 
-				for(int i = 0; i < heightGameGrid * widthGameGrid; i++)
+				for(int i = 0; i < heightGameGrid * widthGameGrid / 2; i++)
 				{
 					listValue.Add(i);
 					listValue.Add(i);
@@ -128,9 +129,8 @@ namespace MEMORY
 						int index = random.Next(0, listValue.Count);
 						Card card = new Card();
 						card.Margin = new Thickness(10);
-						card.Value = listValue[index];
+                        card.Value = listValue[index];
 						card.MouseDown += Card_MouseDown;
-						card.Tag = index;
 						listValue.RemoveAt(index);
 						GameGrid.Children.Add(card);
 
@@ -152,7 +152,7 @@ namespace MEMORY
 		{
 			var card = sender as Card;
 
-			if (!card.isFlipped)
+			if (!card.isFlipped || turn)
 				return;
 
 			card.Flip();
@@ -163,14 +163,16 @@ namespace MEMORY
 			}
 			else
 			{
+				turn = true;
 				_secondCard = card;
                 await Task.Delay(1000);
                 CheckForMatch();
-			}
+                turn = false;
+            }
 		}
 		private void CheckForMatch()
 		{
-			if (_firstCard.Tag.ToString() == _secondCard.Tag.ToString())
+			if (_firstCard.Value == _secondCard.Value)
 			{
 				GameGrid.Children.Remove(_firstCard);
 				GameGrid.Children.Remove(_secondCard);

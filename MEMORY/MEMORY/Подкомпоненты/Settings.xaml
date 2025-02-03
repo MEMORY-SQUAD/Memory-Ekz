@@ -36,12 +36,8 @@
 
                 <!-- выбор темы -->
                 <TextBlock Style="{DynamicResource TottalTbStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Text="Тема:" Grid.Row="2" Grid.Column="0" Margin="20"/>
-				<ComboBox x:Name="ThemeComboBox" Width="400" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Margin="40" VerticalAlignment="Top" SelectionChanged="ThemeComboBox_SelectionChanged">
-					<ComboBoxItem Content="Стандартная"/>
-					<ComboBoxItem Content="Светлая"/>
-					<ComboBoxItem Content="Темная"/>
-				</ComboBox>
-			</Grid>
+                <ComboBox x:Name="ThemeComboBox" Width="400" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Margin="40" VerticalAlignment="Top" SelectionChanged="ThemeComboBox_SelectionChanged"/>
+            </Grid>
 			
 			<!-- Кнопки выход и сохранить -->
 			<Button Style="{DynamicResource ButtonStyle}" FontSize="20" Content="Назад" Grid.Row="1" Margin="10" Padding="10,5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="ExitButton_Click" Width="100"/>
