@@ -2,8 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:MEMORY">
     <Style x:Key="TextBlockStyle" TargetType="TextBlock">
-        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="40"/>
     </Style>
     <Style x:Key="WindowStyle" TargetType="Window">
         <Setter Property="Background" Value="Gray" />
@@ -20,6 +21,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource TotalForeGround}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource BaymaxFont}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -56,7 +58,6 @@
     <Style x:Key="TottalTbStyle" TargetType="TextBlock">
         <Setter Property="Foreground" Value="{DynamicResource TotalForeGround}"/>
     </Style>
-
 
 
     <SolidColorBrush x:Key="MainMenuBackground" Color="LightGray"/>

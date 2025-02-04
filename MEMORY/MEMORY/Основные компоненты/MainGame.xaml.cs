@@ -14,6 +14,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace MEMORY
 {
@@ -30,17 +31,32 @@ namespace MEMORY
 		private int _gridSize;
 		private bool isFliped = false;
 		private bool turn = false;
-		public MainGame(GameState gameState)
+        private DispatcherTimer _timer; // Таймер для обновления интерфейса
+        private DateTime _startTime;   // Время старта
+        public MainGame(GameState gameState, Skins skins)
 		{
 			InitializeComponent();
 			_gameState = gameState;
 			_pairsFound = 0;
-
-			StartGame();
-
+			StartGame(skins);
             ShowCards();
         }
-		private async void ShowCards()
+		private void StartTimer()
+		{
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(1); // Интервал обновления 1 секунда
+            _timer.Tick += Timer_Tick;
+
+            // Установка времени старта и запуск таймера
+            _startTime = DateTime.Now;
+            _timer.Start();
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            var elapsed = DateTime.Now - _startTime;
+            TimerTextBlock.Text = $"Таймер: {elapsed.Minutes:D2}:{elapsed.Seconds:D2}";
+        }
+        private async void ShowCards()
         {
 			this.IsHitTestVisible = false;
             await Task.Delay(100);
@@ -50,9 +66,10 @@ namespace MEMORY
             foreach (Card card in _cards)
 				card.Flip();
             this.IsHitTestVisible = true;
+            StartTimer();
         }
 
-		private void StartGame()
+		private void StartGame(Skins skins)
 		{
 			try
 			{
@@ -74,7 +91,7 @@ namespace MEMORY
                 _cards = new List<Card>();
 
                 СreatingGameField(heightGameGrid, widthGameGrid);
-				FillingGameField(heightGameGrid, widthGameGrid);
+				FillingGameField(heightGameGrid, widthGameGrid, skins);
 			}
 			catch (Exception ex)
 			{
@@ -109,13 +126,24 @@ namespace MEMORY
 			}
 
 		}
-        private void FillingGameField(int heightGameGrid, int widthGameGrid)
+        private void FillingGameField(int heightGameGrid, int widthGameGrid, Skins skin)
 		{
 			try
 			{
 				List<int> listValue = new List<int>();
 
-				for(int i = 0; i < heightGameGrid * widthGameGrid / 2; i++)
+                ResourceDictionary newTheme = null;
+
+                switch (skin)
+                {
+                    case Skins.ProgrammingLanguages:
+                        newTheme = (ResourceDictionary)Application.Current.Resources["LangaguesCards"];
+                        break;
+                }
+
+
+
+                for (int i = 0; i < heightGameGrid * widthGameGrid / 2; i++)
 				{
 					listValue.Add(i);
 					listValue.Add(i);
@@ -126,8 +154,8 @@ namespace MEMORY
 				{
 					for (int j = 0; j < widthGameGrid; j++)
 					{
-						int index = random.Next(0, listValue.Count);
-						Card card = new Card();
+						int index = random.Next(0, listValue.Count);;
+						Card card = new Card((Brush)newTheme["Shirt"], (Brush)newTheme[$"Card{listValue[index]}Image"]);
 						card.Margin = new Thickness(10);
                         card.Value = listValue[index];
 						card.MouseDown += Card_MouseDown;
@@ -145,6 +173,7 @@ namespace MEMORY
 			{
 				MessageBox.Show(ex.Message, "MainGame-FillingGameField: eror");
 			}
+
 
 
 		}

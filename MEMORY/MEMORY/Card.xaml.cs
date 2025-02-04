@@ -29,9 +29,11 @@ namespace MEMORY
             get { return _value; }
             set { _value = value; TBValue.Text = value.ToString(); }
         }
-        public Card()
+        public Card(Brush BrushShirt, Brush BrushValue)
         {
             InitializeComponent();
+            BackSide.Background = BrushShirt;
+            FrontSide.Background = BrushValue;
         }
         public void Flip()
         {

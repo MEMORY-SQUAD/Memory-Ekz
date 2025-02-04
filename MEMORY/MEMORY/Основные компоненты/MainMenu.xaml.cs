@@ -22,11 +22,13 @@ namespace MEMORY
 	{
 		MainWindow _mainWindow;
 		BestResults _bestResults;
-		public MainMenu(MainWindow mainWindow)
+		LocalSettings _localSettings;
+		public MainMenu(MainWindow mainWindow, LocalSettings localSettings)
 		{
 			_mainWindow = mainWindow;
 			InitializeComponent();
 			_bestResults = new BestResults();
+			_localSettings = localSettings;
             MainFrame.Navigate(_bestResults);
         }
 
@@ -42,7 +44,7 @@ namespace MEMORY
 
 		private void SettingsBt_Click(object sender, RoutedEventArgs e)
 		{
-			MainFrame.Navigate(new Settings());
+			MainFrame.Navigate(new Settings(_localSettings));
 		}
 
 		private void AuthorsBt_Click(object sender, RoutedEventArgs e)

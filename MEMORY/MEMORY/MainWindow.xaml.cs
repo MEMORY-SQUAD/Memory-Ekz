@@ -21,16 +21,17 @@ namespace MEMORY
     /// </summary>
     public partial class MainWindow : Window
     {
+        LocalSettings localSettings;
         MainGame currentGame;
         MainMenu menu;
 
         public MainWindow()
         {
             InitializeComponent();
-
-            menu = new MainMenu(this);
+            localSettings = new LocalSettings();
+            localSettings.LoadFromRegistry();
+            menu = new MainMenu(this, localSettings);
             MainFrame.Navigate(menu);
-
 
             //Properties.Resources.ResourceManager.;
 
@@ -56,7 +57,7 @@ namespace MEMORY
         }
         public void StartNewGame(GameState gameState)
         {
-            currentGame = new MainGame(gameState);
+            currentGame = new MainGame(gameState, Skins.ProgrammingLanguages);
             MainFrame.Navigate(currentGame);
         }
         public void ContinueGame()

@@ -59,6 +59,11 @@
     <Compile Include="Card.xaml.cs">
       <DependentUpon>Card.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Основные компоненты\MainGame.xaml.cs">
       <DependentUpon>MainGame.xaml</DependentUpon>
     </Compile>
@@ -143,16 +148,40 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Resource Include="Доп эллементы\Baymax.otf" />
+    <Resource Include="Fonts\Baymax.otf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="МатериалыДляРесурсов\" />
+    <Folder Include="Музыка\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Карты\Languages Pr\CardValue2.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue3.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue1.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue4.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue5.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue6.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue7.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue8.jpg" />
+    <Resource Include="Карты\Languages Pr\main.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue9.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue10.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue11.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue12.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue13.jpg" />
+    <Resource Include="Карты\Languages Pr\shirt.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue14.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue15.jpg" />
+    <Resource Include="Карты\Languages Pr\CardValue16.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

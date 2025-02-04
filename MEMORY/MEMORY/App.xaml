@@ -1,9 +1,30 @@
 ﻿<Application x:Class="MEMORY.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:MEMORY"
-             StartupUri="MainWindow.xaml">
-    <Application.Resources>
-        <ResourceDictionary Source="Темы\Standart.xaml"/>
-    </Application.Resources>
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="clr-namespace:MEMORY"
+			 StartupUri="MainWindow.xaml">
+	<Application.Resources>
+		<ResourceDictionary>
+			<!-- Набор карт 1 -->
+			<ResourceDictionary x:Key="LangaguesCards">
+				<ImageBrush x:Key="Card1Image" ImageSource="Карты/Languages Pr/CardValue1.jpg"/>
+				<ImageBrush x:Key="Card2Image" ImageSource="Карты/Languages Pr/CardValue2.jpg"/>
+				<ImageBrush x:Key="Card3Image" ImageSource="Карты/Languages Pr/CardValue3.jpg"/>
+				<ImageBrush x:Key="Card4Image" ImageSource="Карты/Languages Pr/CardValue4.jpg"/>
+				<ImageBrush x:Key="Card5Image" ImageSource="Карты/Languages Pr/CardValue5.jpg"/>
+				<ImageBrush x:Key="Card6Image" ImageSource="Карты/Languages Pr/CardValue6.jpg"/>
+				<ImageBrush x:Key="Card7Image" ImageSource="Карты/Languages Pr/CardValue7.jpg"/>
+				<ImageBrush x:Key="Card8Image" ImageSource="Карты/Languages Pr/CardValue8.jpg"/>
+				<ImageBrush x:Key="Card9Image" ImageSource="Карты/Languages Pr/CardValue9.jpg"/>
+				<ImageBrush x:Key="Card10Image" ImageSource="Карты/Languages Pr/CardValue10.jpg"/>
+				<ImageBrush x:Key="Card11Image" ImageSource="Карты/Languages Pr/CardValue11.jpg"/>
+				<ImageBrush x:Key="Card12Image" ImageSource="Карты/Languages Pr/CardValue12.jpg"/>
+				<ImageBrush x:Key="Card13Image" ImageSource="Карты/Languages Pr/CardValue13.jpg"/>
+				<ImageBrush x:Key="Card14Image" ImageSource="Карты/Languages Pr/CardValue14.jpg"/>
+				<ImageBrush x:Key="Card15Image" ImageSource="Карты/Languages Pr/CardValue15.jpg"/>
+				<ImageBrush x:Key="Card16Image" ImageSource="Карты/Languages Pr/CardValue16.jpg"/>
+				<ImageBrush x:Key="Shirt" ImageSource="Карты/Languages Pr/shirt.jpg"/>
+			</ResourceDictionary>
+		</ResourceDictionary>
+	</Application.Resources>
 </Application>

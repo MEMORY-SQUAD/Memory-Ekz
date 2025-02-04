@@ -6,14 +6,15 @@
 	  xmlns:local="clr-namespace:MEMORY"
 	  mc:Ignorable="d"
 	  Title="Settings"
-      Height="800" Width="1200">
+	  FontFamily="/MEMORY;component/Fonts/#Baymax"
+	  Height="800" Width="1200">
 	<Border CornerRadius="20" Background="{DynamicResource PagesBackground}">
 		<Grid Margin="50">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto"/>
@@ -27,21 +28,21 @@
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
 				<!-- громкость звуков -->
-                <TextBlock Style="{DynamicResource TottalTbStyle}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Громкость звуков:" Margin="10"/>
+				<TextBlock Style="{DynamicResource TottalTbStyle}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Громкость звуков:" Margin="10"/>
 				<Slider x:Name="VolumeSlider" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" Minimum="0" Maximum="100" Value="50" Width="500" Margin="10"/>
 
-                <!-- громкость Музыки -->
-                <TextBlock Style="{DynamicResource TottalTbStyle}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Text="Громкость музыки:" Margin="10"/>
-                <Slider x:Name="VolumeSoundSlider" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" Minimum="0" Maximum="100" Value="50" Width="500" Margin="10"/>
+				<!-- громкость Музыки -->
+				<TextBlock Style="{DynamicResource TottalTbStyle}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Text="Громкость музыки:" Margin="10"/>
+				<Slider x:Name="VolumeMusikSlider" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" Minimum="0" Maximum="100" Value="50" Width="500" Margin="10"/>
 
-                <!-- выбор темы -->
-                <TextBlock Style="{DynamicResource TottalTbStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Text="Тема:" Grid.Row="2" Grid.Column="0" Margin="20"/>
-                <ComboBox x:Name="ThemeComboBox" Width="400" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Margin="40" VerticalAlignment="Top" SelectionChanged="ThemeComboBox_SelectionChanged"/>
-            </Grid>
-			
+				<!-- выбор темы -->
+				<TextBlock Style="{DynamicResource TottalTbStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Text="Тема:" Grid.Row="2" Grid.Column="0" Margin="20"/>
+				<ComboBox x:Name="ThemeComboBox" Width="400" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Margin="40" VerticalAlignment="Top" SelectionChanged="ThemeComboBox_SelectionChanged"/>
+			</Grid>
+
 			<!-- Кнопки выход и сохранить -->
-			<Button Style="{DynamicResource ButtonStyle}" FontSize="20" Content="Назад" Grid.Row="1" Margin="10" Padding="10,5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="ExitButton_Click" Width="100"/>
-			<Button Style="{DynamicResource ButtonStyle}" FontSize="20" Content="Сохранить" Grid.Row="1" Margin="10"  Padding="10,5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="ApplySettingsButton_Click" Grid.Column="1" Width="114"/>
+			<Button Click="ExitButton_Click" Style="{DynamicResource ButtonStyle}" FontSize="20" Content="Назад" Grid.Row="1" Margin="10" Padding="10,5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100"/>
+			<Button Click="ApplySettingsButton_Click"  Style="{DynamicResource ButtonStyle}" FontSize="20" Content="Сохранить" Grid.Row="1" Margin="0,403,10,0"  Padding="10,5" VerticalAlignment="Top" HorizontalAlignment="Right" Width="114"/>
 
 		</Grid>
 

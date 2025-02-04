@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:MEMORY"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Authors">
+      Title="Authors"
+      FontFamily="/MEMORY;component/Fonts/#Baymax">
 
     <Border CornerRadius="20" Background="{DynamicResource PagesBackground}">
         <Grid Margin="50">
