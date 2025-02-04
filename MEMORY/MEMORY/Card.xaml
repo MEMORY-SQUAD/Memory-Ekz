@@ -13,13 +13,13 @@
             </Grid.RenderTransform>
 
             <!-- Лицевая сторона карты -->
-            <Border x:Name="FrontSide" Background="Blue" Visibility="Collapsed">
-                <TextBlock x:Name="TBValue" Text="A♠" Foreground="White" FontSize="24"
+            <Border CornerRadius="10" x:Name="FrontSide" Background="Blue" Visibility="Collapsed">
+                <TextBlock x:Name="TBValue" Foreground="White" FontSize="24"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
 
             <!-- Обратная сторона карты -->
-            <Border x:Name="BackSide" Background="Red" Visibility="Visible">
+        <Border CornerRadius="10" x:Name="BackSide" Background="Red" Visibility="Visible">
                 <TextBlock Text="" Foreground="#FFFFFF00"/>
             </Border>
         </Grid>

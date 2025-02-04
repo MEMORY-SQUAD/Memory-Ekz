@@ -137,10 +137,9 @@ namespace MEMORY
                 switch (skin)
                 {
                     case Skins.ProgrammingLanguages:
-                        newTheme = (ResourceDictionary)Application.Current.Resources["LangaguesCards"];
+                        newTheme = (ResourceDictionary)this.Resources["LangaguesCards"];
                         break;
                 }
-
 
 
                 for (int i = 0; i < heightGameGrid * widthGameGrid / 2; i++)
@@ -155,7 +154,7 @@ namespace MEMORY
 					for (int j = 0; j < widthGameGrid; j++)
 					{
 						int index = random.Next(0, listValue.Count);;
-						Card card = new Card((Brush)newTheme["Shirt"], (Brush)newTheme[$"Card{listValue[index]}Image"]);
+						Card card = new Card((Brush)newTheme["Shirt"], (Brush)newTheme[$"Card{listValue[index]+1}Image"]);
 						card.Margin = new Thickness(10);
                         card.Value = listValue[index];
 						card.MouseDown += Card_MouseDown;
