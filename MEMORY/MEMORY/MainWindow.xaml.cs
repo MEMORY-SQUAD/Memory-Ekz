@@ -26,11 +26,13 @@ namespace MEMORY
         MainMenu menu;
         public List<Result> ResultsList { get; }
         public bool GameExist { get; set; }
+        private MediaPlayer mediaPlayer;
+        private List<string> audioResources;
+        private Random random;
 
         public MainWindow()
         {
             InitializeComponent();
-            InitializeMusic();
 
             ResultsList = Result.DeserializeResults();
             GameExist = false;
@@ -40,7 +42,11 @@ namespace MEMORY
             menu = new MainMenu(this, localSettings);
             MainFrame.Navigate(menu);
 
-
+            random = new Random((int)DateTime.Now.Ticks);
+            audioResources = new List<string> { Directory.GetCurrentDirectory() + "\\Sounds\\aerhead-shizuka.mp3" };
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
+            PlayRandomAudio();
 
             //Properties.Resources.ResourceManager.;
 
@@ -64,19 +70,28 @@ namespace MEMORY
             //    File.Delete(tempFilePath);
             //};
         }
-
-        private void InitializeMusic()
+        private void PlayRandomAudio()
         {
+            if (audioResources.Count == 0)
+                return;
 
-            //// Список ресурсов с аудиофайлами
-            //audioPaths = new List<string>
-            //{
-            //    "aerhead-shizuka.wav",
-            //    "barradeen-boku-no-love.wav",
-            //    "ghostrifter-morning-routine.wav"
-            //};
+            // Выбор случайного трека
+            int index = random.Next(audioResources.Count);
+            string audioResource = audioResources[index];
 
-            //random = new Random();
+            // Загрузка и воспроизведение трека
+            mediaPlayer.Volume = localSettings.MusicVolume;
+            mediaPlayer.Open(new Uri(audioResource));
+            mediaPlayer.Play();
+        }
+        public void RedactVolumnMusic()
+        {
+            mediaPlayer.Volume = localSettings.MusicVolume;
+        }
+        private void MediaPlayer_MediaEnded(object sender, EventArgs e)
+        {
+            // Когда трек заканчивается, воспроизводим следующий случайный трек
+            PlayRandomAudio();
         }
         public void AddResult(Result result)
         {

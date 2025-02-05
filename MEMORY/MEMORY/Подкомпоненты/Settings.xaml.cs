@@ -24,13 +24,15 @@ namespace MEMORY
         //настройки сохраняются в файл, при загрузке берутся там же
         private string settingsFilePath = "settings.txt";
         private Themes _firstTheme;
+        private MainWindow _mainWindow;
         private LocalSettings _settings;
-        public Settings(LocalSettings localSettings)
+        public Settings(LocalSettings localSettings, MainWindow mainWindow)
         {
             InitializeComponent();
             _settings = localSettings;
             VolumeMusikSlider.Value = _settings.MusicVolume;
             VolumeSlider.Value = _settings.SoundVolume;
+            _mainWindow = mainWindow;
             LoadThemes();
         }
 
@@ -63,6 +65,7 @@ namespace MEMORY
         private void ApplySettingsButton_Click(object sender, RoutedEventArgs e)
         {
             SaveSettings();
+            _mainWindow.RedactVolumnMusic();
         }
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {

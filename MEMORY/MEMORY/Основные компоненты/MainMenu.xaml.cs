@@ -56,7 +56,7 @@ namespace MEMORY
 
 		private void SettingsBt_Click(object sender, RoutedEventArgs e)
 		{
-			MainFrame.Navigate(new Settings(_localSettings));
+			MainFrame.Navigate(new Settings(_localSettings, _mainWindow));
 		}
 
 		private void AuthorsBt_Click(object sender, RoutedEventArgs e)
