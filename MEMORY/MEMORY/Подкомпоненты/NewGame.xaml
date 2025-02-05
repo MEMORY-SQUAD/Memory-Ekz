@@ -1,0 +1,35 @@
+﻿<Page x:Class="MEMORY.NewGame"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MEMORY"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NewGame"
+      Height="800" Width="1200"
+      FontFamily="/MEMORY;component/Fonts/#Baymax">
+
+    <Border CornerRadius="20" Background="{DynamicResource PagesBackground}">
+        <Grid Margin="50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{DynamicResource TottalTbStyle}" Margin="10" Text="Сложность" FontSize="50" HorizontalAlignment="Center"/>
+
+            <Border Grid.Row="1" Height="auto" HorizontalAlignment="Center">
+                <StackPanel>
+                    <Button Style="{DynamicResource DifficultyButtonStyle}" Background="Green" Content="Лёгкая" Click="Button_Click_1"/>
+                    <Button Style="{DynamicResource DifficultyButtonStyle}" Background="Yellow"  Content="Средняя" Click="Button_Click_2"/>
+                    <Button Style="{DynamicResource DifficultyButtonStyle}" Background="Red" Content="Сложная" Click="Button_Click_3"/>
+                </StackPanel>
+            </Border>
+
+            <Button Click="ExutBt_Click" Content="Выход" x:Name="ExutBt"  Grid.Row="2" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Margin="20"/>
+            <Button Click="StartBt_Click" Content="Начать" x:Name="StartBt"  Grid.Row="2" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Margin="20"/>
+        </Grid>
+    </Border>
+</Page>

@@ -1,0 +1,50 @@
+﻿<Page x:Class="MEMORY.Settings"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	  xmlns:local="clr-namespace:MEMORY"
+	  mc:Ignorable="d"
+	  Title="Settings"
+	  FontFamily="/MEMORY;component/Fonts/#Baymax"
+	  Height="800" Width="1200">
+	<Border CornerRadius="20" Background="{DynamicResource PagesBackground}">
+		<Grid Margin="50">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<!-- громкость звуков -->
+				<TextBlock Style="{DynamicResource TottalTbStyle}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Громкость звуков:" Margin="10"/>
+				<Slider x:Name="VolumeSlider" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" Minimum="0" Maximum="100" Value="50" Width="500" Margin="10"/>
+
+				<!-- громкость Музыки -->
+				<TextBlock Style="{DynamicResource TottalTbStyle}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Text="Громкость музыки:" Margin="10"/>
+				<Slider x:Name="VolumeMusikSlider" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" Minimum="0" Maximum="100" Value="50" Width="500" Margin="10"/>
+
+				<!-- выбор темы -->
+				<TextBlock Style="{DynamicResource TottalTbStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Text="Тема:" Grid.Row="2" Grid.Column="0" Margin="20"/>
+				<ComboBox x:Name="ThemeComboBox" FontSize="30" Width="400" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Margin="20" VerticalAlignment="Top" SelectionChanged="ThemeComboBox_SelectionChanged"/>
+			</Grid>
+
+			<!-- Кнопки выход и сохранить -->
+			<Button Click="ExitButton_Click" Style="{DynamicResource ButtonStyle}" Content="Назад" Grid.Row="1" Margin="10"  VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+			<Button Click="ApplySettingsButton_Click"  Style="{DynamicResource ButtonStyle}" Content="Сохранить" Grid.Row="1" Margin="0,403,10,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+
+		</Grid>
+
+	</Border>
+</Page>
