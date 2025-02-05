@@ -28,6 +28,7 @@ namespace MEMORY
             StartBt.Background = Brushes.Green;
             _gameState = new GameState(Skins.Standart, GameDifficulty.easily);
             _gameState.GameDifficulty = GameDifficulty.easily;
+            _gameState.Skins = Skins.ProgrammingLanguages;
             _mainWindow = mainWindow;
         }
 

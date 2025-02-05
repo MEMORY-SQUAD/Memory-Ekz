@@ -9,7 +9,7 @@
       Title="BestResults"
       FontFamily="/MEMORY;component/Fonts/#Baymax">
 
-    <Border CornerRadius="20" Width="500" Background="{DynamicResource PagesBackground}">
+    <Border CornerRadius="20" Width="600" Background="{DynamicResource PagesBackground}">
         <Grid Margin="50,0,50,50">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -17,6 +17,8 @@
             </Grid.RowDefinitions>
 
             <TextBlock Style="{DynamicResource TottalTbStyle}" Text="Лучшие результаты" FontSize="40" Margin="15"/>
+
+            <StackPanel x:Name="ResultsSP" Margin="5"/>
 
         </Grid>
     </Border>

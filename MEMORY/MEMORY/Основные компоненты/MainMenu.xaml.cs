@@ -25,21 +25,33 @@ namespace MEMORY
 		LocalSettings _localSettings;
 		public MainMenu(MainWindow mainWindow, LocalSettings localSettings)
 		{
-			_mainWindow = mainWindow;
 			InitializeComponent();
-			_bestResults = new BestResults();
+            Loaded += MainMenu_Loaded;
+            _mainWindow = mainWindow;
+            _bestResults = new BestResults(_mainWindow.ResultsList);
 			_localSettings = localSettings;
             MainFrame.Navigate(_bestResults);
         }
+		public void UpdateBestResults()
+		{
+			_bestResults = new BestResults(_mainWindow.ResultsList);
+        }
+        private void MainMenu_Loaded(object sender, RoutedEventArgs e)
+        {
+			if (!_mainWindow.GameExist)
+				ContinueBt.IsEnabled = false;
+            else
+                ContinueBt.IsEnabled = true;
+        }
 
-		private void StartBt_Click(object sender, RoutedEventArgs e)
+        private void StartBt_Click(object sender, RoutedEventArgs e)
 		{
 			MainFrame.Navigate(new NewGame(_mainWindow));
 		}
 
 		private void ContinueBt_Click(object sender, RoutedEventArgs e)
 		{
-
+			_mainWindow.ContinueGame();
         }
 
 		private void SettingsBt_Click(object sender, RoutedEventArgs e)

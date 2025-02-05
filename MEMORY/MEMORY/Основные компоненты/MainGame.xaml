@@ -19,8 +19,8 @@
 
     <DockPanel>
         <Grid DockPanel.Dock="Bottom">
-            <Button Style="{DynamicResource ButtonStyle}" Margin="20" x:Name="ExitBt" Content="Выход" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <Button Style="{DynamicResource ButtonStyle}" Margin="20" x:Name="RetryBt" Content="Заново" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <Button Style="{DynamicResource ButtonStyle}" Margin="20" x:Name="ExitBt" Content="Выход" VerticalAlignment="Center" HorizontalAlignment="Left" Click="ExitBt_Click"/>
+            <Button Style="{DynamicResource ButtonStyle}" Margin="20" x:Name="RetryBt" Content="Заново" VerticalAlignment="Center" HorizontalAlignment="Right" Click="RetryBt_Click"/>
         </Grid>
 
         <Grid DockPanel.Dock="Top" Height="40">

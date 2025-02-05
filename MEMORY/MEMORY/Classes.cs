@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -116,7 +117,7 @@ namespace MEMORY
         public Skins Skins
         {
             get { return _skin; }
-            private set { _skin = value; }
+            set { _skin = value; }
         }
 
         public GameDifficulty GameDifficulty
@@ -154,73 +155,65 @@ namespace MEMORY
     }
     public class Result : IComparable<Result>
     {
-        public TimeSpan Time { get; set; }
+        public int TimeInSecond { get; set; }
         public int UserMoves { get; set; }
         public int MinimalMoves { get; set; }
-
-        public Result(TimeSpan time, int userMoves, int minimalMoves)
+        public int GameDifficult { get; set; }
+        private static string filePath = "results.bin";
+        public Result(int timeInSecond, int userMoves, int minimalMoves, short gameDifficult)
         {
-            Time = time;
+            TimeInSecond = timeInSecond;
             UserMoves = userMoves;
             MinimalMoves = minimalMoves;
+            GameDifficult = gameDifficult;
         }
 
         public double CalculateRating()
         {
             double movesFactor = (double)MinimalMoves / UserMoves;
-            double timeFactor = 0.5 / Time.TotalSeconds;
+            double timeFactor = 0.5 / TimeInSecond;
             return (movesFactor + timeFactor) / 2.0;
         }
         public int CompareTo(Result other)
         {
             return other.CalculateRating().CompareTo(this.CalculateRating());
         }
-    }
-
-    public static class ResultManager
-    {
-        static string filePath = "results.json";
-        public static void SaveTopResultsToFile(List<Result> results)
+        public static void SerializeResults(List<Result> results)
         {
-            // Сортировка результатов по рейтингу
-            var topResults = results.OrderBy(r => r).Take(10).ToList();
-
-            // Запись в бинарный файл
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            using (var writer = new BinaryWriter(stream))
+            try
             {
-                foreach (var result in topResults)
+                using (FileStream fs = new FileStream(filePath, FileMode.Create))
                 {
-                    writer.Write(result.Time.Ticks); // Сохраняем время в тиках
-                    writer.Write(result.UserMoves);
-                    writer.Write(result.MinimalMoves);
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    formatter.Serialize(fs, results);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при сериализации: " + ex.Message);
             }
         }
 
-        public static List<Result> LoadResultsFromFile()
+        public static List<Result> DeserializeResults()
         {
-            var results = new List<Result>();
-
-            if (!File.Exists(filePath))
+            try
             {
+                List<Result> results;
+                if (File.Exists(filePath)) 
+                using (FileStream fs = new FileStream(filePath, FileMode.Open))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                        results = (List<Result>)formatter.Deserialize(fs);
+                }
+                else
+                    results = new List<Result>();
                 return results;
             }
-
-            // Чтение из бинарного файла
-            using (var stream = new FileStream(filePath, FileMode.Open))
-            using (var reader = new BinaryReader(stream))
+            catch (Exception ex)
             {
-                while (reader.BaseStream.Position < reader.BaseStream.Length)
-                {
-                    long ticks = reader.ReadInt64();
-                    int userMoves = reader.ReadInt32();
-                    int minimalMoves = reader.ReadInt32();
-
-                    results.Add(new Result(new TimeSpan(ticks), userMoves, minimalMoves));
-                }
+                MessageBox.Show("Ошибка при десериализации: " + ex.Message);
+                return null;
             }
-            return results;
         }
     }
 }

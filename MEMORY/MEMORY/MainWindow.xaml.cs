@@ -21,25 +21,25 @@ namespace MEMORY
     /// </summary>
     public partial class MainWindow : Window
     {
-        LocalSettings localSettings;
+        public LocalSettings localSettings;
         MainGame currentGame;
         MainMenu menu;
-        MediaPlayer mediaPlayer;
-        List<string> audioResources;
-        Random random;
-        public List<Result> Results { get; }
+        public List<Result> ResultsList { get; }
+        public bool GameExist { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
             InitializeMusic();
 
-            Results = ResultManager.LoadResultsFromFile();
+            ResultsList = Result.DeserializeResults();
+            GameExist = false;
 
             localSettings = new LocalSettings();
             localSettings.LoadFromRegistry();
             menu = new MainMenu(this, localSettings);
             MainFrame.Navigate(menu);
+
 
 
             //Properties.Resources.ResourceManager.;
@@ -67,46 +67,32 @@ namespace MEMORY
 
         private void InitializeMusic()
         {
-            mediaPlayer = new MediaPlayer();
-            mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
 
-            // Список ресурсов с аудиофайлами
-            audioResources = new List<string>
-            {
-                "aerhead-shizuka.wav",
-                "barradeen-boku-no-love.wav",
-                "ghostrifter-morning-routine.wav"
-            };
+            //// Список ресурсов с аудиофайлами
+            //audioPaths = new List<string>
+            //{
+            //    "aerhead-shizuka.wav",
+            //    "barradeen-boku-no-love.wav",
+            //    "ghostrifter-morning-routine.wav"
+            //};
 
-            random = new Random();
-
-            // Начать воспроизведение случайного трека
-            PlayRandomAudio();
+            //random = new Random();
         }
-        private void PlayRandomAudio()
+        public void AddResult(Result result)
         {
-            if (audioResources.Count == 0)
-                return;
-
-            // Выбор случайного трека
-            int index = random.Next(audioResources.Count);
-            string audioResource = audioResources[index];
-
-            // Загрузка и воспроизведение трека
-            mediaPlayer.Open(new Uri($"pack://application:,,,/YourAssemblyName;component/Resources/{audioResource[index]}", UriKind.Absolute));
-            mediaPlayer.Play();
+            ResultsList.Add(result);
+            Result.SerializeResults(ResultsList);
+            menu.UpdateBestResults();
         }
-
-        private void MediaPlayer_MediaEnded(object sender, EventArgs e)
-        {
-            // Когда трек заканчивается, воспроизводим следующий случайный трек
-            PlayRandomAudio();
-        }
-
         public void StartNewGame(GameState gameState)
         {
-            currentGame = new MainGame(gameState, Skins.ProgrammingLanguages);
+            currentGame = new MainGame(gameState, this);
+            GameExist = true;
             MainFrame.Navigate(currentGame);
+        }
+        public void ExitGame()
+        {
+            MainFrame.Navigate(menu);
         }
         public void ContinueGame()
         {

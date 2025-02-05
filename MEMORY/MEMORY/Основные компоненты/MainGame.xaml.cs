@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -23,46 +24,60 @@ namespace MEMORY
 	/// </summary>
 	public partial class MainGame : Page
 	{
-		private GameState _gameState;
-		private Card _firstCard;
-		private Card _secondCard;
-		private List<Card> _cards;
-		private int _pairsFound;
-		private int _gridSize;
-		private bool isFliped = false;
-		private bool turn = false;
+		private MainWindow _mainWindow; //Главное окно
+		private GameState _gameState;	//Настройки
+		private Card _firstCard;		//Вторая выбанная карта
+		private Card _secondCard;		//Первая выбранная карта
+		private List<Card> _cards;		//Карты
+		private int _pairsRightTurn;	//Количество найденных пар
+		private int _pairsTurnCount;    //Колтчество Ходов
+		private int _gridSize;			//Размер поля
+		private int _pastЕense;			//Прошедшее время
+        private bool isFliped = false;	//Для первоначального переворота карт
+		private bool turn = false;		//Для проверки хода
+		private bool _autoWin = true;
         private DispatcherTimer _timer; // Таймер для обновления интерфейса
-        private DateTime _startTime;   // Время старта
-        public MainGame(GameState gameState, Skins skins)
+        public MainGame(GameState gameState, MainWindow mainMenu)
 		{
 			InitializeComponent();
+            this.Loaded += MainGame_Loaded;
 			_gameState = gameState;
-			_pairsFound = 0;
-			StartGame(skins);
+            _pairsRightTurn = 0;
+			_mainWindow = mainMenu;
+			StartGame(gameState.Skins);
             ShowCards();
         }
-		private void StartTimer()
+
+        private void MainGame_Loaded(object sender, RoutedEventArgs e)
+        {
+			if(_timer != null)
+				_timer.Start();
+        }
+
+        private void StartTimer()
 		{
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(1); // Интервал обновления 1 секунда
             _timer.Tick += Timer_Tick;
 
             // Установка времени старта и запуск таймера
-            _startTime = DateTime.Now;
+			_pastЕense = 0;
             _timer.Start();
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            var elapsed = DateTime.Now - _startTime;
-            TimerTextBlock.Text = $"Таймер: {elapsed.Minutes:D2}:{elapsed.Seconds:D2}";
+            TimerTextBlock.Text = $"Таймер: {_pastЕense/60:D2}:{_pastЕense%60:D2}";
+            _pastЕense++;
         }
         private async void ShowCards()
         {
 			this.IsHitTestVisible = false;
+			PlayFlip();
             await Task.Delay(100);
             foreach (Card card in _cards)
                 card.Flip();
-            await Task.Delay(10000);
+            await Task.Delay(1000);
+            PlayFlip();
             foreach (Card card in _cards)
 				card.Flip();
             this.IsHitTestVisible = true;
@@ -178,7 +193,9 @@ namespace MEMORY
 		}
 		private async void Card_MouseDown(object sender, MouseButtonEventArgs e)
 		{
-			var card = sender as Card;
+			PlayFlip();
+
+            var card = sender as Card;
 
 			if (!card.isFlipped || turn)
 				return;
@@ -191,6 +208,8 @@ namespace MEMORY
 			}
 			else
 			{
+				_pairsTurnCount++;
+				MoveCountTextBlock.Text = $"Ходы: {_pairsTurnCount}";
 				turn = true;
 				_secondCard = card;
                 await Task.Delay(1000);
@@ -198,20 +217,29 @@ namespace MEMORY
                 turn = false;
             }
 		}
-		private void CheckForMatch()
+		private void PlayFlip()
 		{
-			if (_firstCard.Value == _secondCard.Value)
+			MediaPlayer mediaPlayer = new MediaPlayer();
+			mediaPlayer.Open(new Uri(Directory.GetCurrentDirectory() + "\\Sounds\\cardFlip.mp3"));
+			mediaPlayer.Volume = _mainWindow.localSettings.SoundVolume / 100;
+			mediaPlayer.Play();
+		}
+		private void CheckForMatch()
+        {
+            if (_firstCard.Value == _secondCard.Value)
 			{
 				GameGrid.Children.Remove(_firstCard);
 				GameGrid.Children.Remove(_secondCard);
 
-				_pairsFound++;
 
-				if (_pairsFound == _gridSize / 2)
+                _pairsRightTurn++;
+                if (_pairsRightTurn == _gridSize / 2)
 				{
 					MessageBox.Show("Поздравляем! Вы нашли все пары!");
+					EndGame();
 				}
-			}
+
+            }
 			else
 			{
 				_firstCard.Flip();
@@ -223,13 +251,25 @@ namespace MEMORY
 		}
 		private void EndGame()
 		{
-
+			Result result = new Result(_pastЕense, _pairsTurnCount, _pairsRightTurn, (short)_gameState.GameDifficulty);
+			_mainWindow.AddResult(result);
 		}
 
         private void Page_MouseDown(object sender, MouseButtonEventArgs e)
         {
 			if(isFliped)
 				e.Handled = true;
+        }
+
+        private void ExitBt_Click(object sender, RoutedEventArgs e)
+        {
+			_timer.Stop();
+			_mainWindow.ExitGame();
+        }
+
+        private void RetryBt_Click(object sender, RoutedEventArgs e)
+        {
+			_mainWindow.StartNewGame(_gameState);
         }
     }
 }

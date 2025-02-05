@@ -20,9 +20,13 @@ namespace MEMORY
     /// </summary>
     public partial class BestResults : Page
     {
-        public BestResults()
+        public BestResults(List<Result> results)
         {
             InitializeComponent();
+            for(int i = 0; i < results.Count % 10; i++)
+            {
+                ResultCard resultCard = new ResultCard(results[i], i+1);
+            }
         }
     }
 }
