@@ -22,9 +22,9 @@
 
             <Border Grid.Row="1" Height="auto" HorizontalAlignment="Center">
                 <StackPanel>
-                    <Button Style="{DynamicResource DifficultyButtonStyle}" Background="Green" FontSize="20" Content="Лёгкая" Margin="20" Click="Button_Click_1"/>
-                    <Button Style="{DynamicResource DifficultyButtonStyle}" Background="Yellow" FontSize="20" Content="Средняя" Margin="20" Click="Button_Click_2"/>
-                    <Button Style="{DynamicResource DifficultyButtonStyle}" Background="Red" FontSize="20" Content="Сложная" Margin="20" Click="Button_Click_3"/>
+                    <Button Style="{DynamicResource DifficultyButtonStyle}" Background="Green" Content="Лёгкая" Click="Button_Click_1"/>
+                    <Button Style="{DynamicResource DifficultyButtonStyle}" Background="Yellow"  Content="Средняя" Click="Button_Click_2"/>
+                    <Button Style="{DynamicResource DifficultyButtonStyle}" Background="Red" Content="Сложная" Click="Button_Click_3"/>
                 </StackPanel>
             </Border>
 

@@ -155,7 +155,7 @@ namespace MEMORY
 					{
 						int index = random.Next(0, listValue.Count);;
 						Card card = new Card((Brush)newTheme["Shirt"], (Brush)newTheme[$"Card{listValue[index]+1}Image"]);
-						card.Margin = new Thickness(10);
+						card.Margin = new Thickness(5);
                         card.Value = listValue[index];
 						card.MouseDown += Card_MouseDown;
 						listValue.RemoveAt(index);

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Win32;
@@ -89,9 +91,9 @@ namespace MEMORY
                 {
                     if (key != null)
                     {
-                        Theme = (Themes)(int)key.GetValue("Theme", 0); // Загружаем тему, по умолчанию 0
-                        SoundVolume = Convert.ToDouble(key.GetValue("SoundVolume", 50)); // По умолчанию 1.0
-                        MusicVolume = Convert.ToDouble(key.GetValue("MusicVolume", 50)); // По умолчанию 1.0
+                        Theme = (Themes)(int)key.GetValue("Theme", 0);
+                        SoundVolume = Convert.ToDouble(key.GetValue("SoundVolume", 50)); 
+                        MusicVolume = Convert.ToDouble(key.GetValue("MusicVolume", 50)); 
                     
                     }
                 }
@@ -149,5 +151,76 @@ namespace MEMORY
         easily,
         normally,
         hard
+    }
+    public class Result : IComparable<Result>
+    {
+        public TimeSpan Time { get; set; }
+        public int UserMoves { get; set; }
+        public int MinimalMoves { get; set; }
+
+        public Result(TimeSpan time, int userMoves, int minimalMoves)
+        {
+            Time = time;
+            UserMoves = userMoves;
+            MinimalMoves = minimalMoves;
+        }
+
+        public double CalculateRating()
+        {
+            double movesFactor = (double)MinimalMoves / UserMoves;
+            double timeFactor = 0.5 / Time.TotalSeconds;
+            return (movesFactor + timeFactor) / 2.0;
+        }
+        public int CompareTo(Result other)
+        {
+            return other.CalculateRating().CompareTo(this.CalculateRating());
+        }
+    }
+
+    public static class ResultManager
+    {
+        static string filePath = "results.json";
+        public static void SaveTopResultsToFile(List<Result> results)
+        {
+            // Сортировка результатов по рейтингу
+            var topResults = results.OrderBy(r => r).Take(10).ToList();
+
+            // Запись в бинарный файл
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            using (var writer = new BinaryWriter(stream))
+            {
+                foreach (var result in topResults)
+                {
+                    writer.Write(result.Time.Ticks); // Сохраняем время в тиках
+                    writer.Write(result.UserMoves);
+                    writer.Write(result.MinimalMoves);
+                }
+            }
+        }
+
+        public static List<Result> LoadResultsFromFile()
+        {
+            var results = new List<Result>();
+
+            if (!File.Exists(filePath))
+            {
+                return results;
+            }
+
+            // Чтение из бинарного файла
+            using (var stream = new FileStream(filePath, FileMode.Open))
+            using (var reader = new BinaryReader(stream))
+            {
+                while (reader.BaseStream.Position < reader.BaseStream.Length)
+                {
+                    long ticks = reader.ReadInt64();
+                    int userMoves = reader.ReadInt32();
+                    int minimalMoves = reader.ReadInt32();
+
+                    results.Add(new Result(new TimeSpan(ticks), userMoves, minimalMoves));
+                }
+            }
+            return results;
+        }
     }
 }

@@ -24,14 +24,23 @@ namespace MEMORY
         LocalSettings localSettings;
         MainGame currentGame;
         MainMenu menu;
+        MediaPlayer mediaPlayer;
+        List<string> audioResources;
+        Random random;
+        public List<Result> Results { get; }
 
         public MainWindow()
         {
             InitializeComponent();
+            InitializeMusic();
+
+            Results = ResultManager.LoadResultsFromFile();
+
             localSettings = new LocalSettings();
             localSettings.LoadFromRegistry();
             menu = new MainMenu(this, localSettings);
             MainFrame.Navigate(menu);
+
 
             //Properties.Resources.ResourceManager.;
 
@@ -55,6 +64,45 @@ namespace MEMORY
             //    File.Delete(tempFilePath);
             //};
         }
+
+        private void InitializeMusic()
+        {
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
+
+            // Список ресурсов с аудиофайлами
+            audioResources = new List<string>
+            {
+                "aerhead-shizuka.wav",
+                "barradeen-boku-no-love.wav",
+                "ghostrifter-morning-routine.wav"
+            };
+
+            random = new Random();
+
+            // Начать воспроизведение случайного трека
+            PlayRandomAudio();
+        }
+        private void PlayRandomAudio()
+        {
+            if (audioResources.Count == 0)
+                return;
+
+            // Выбор случайного трека
+            int index = random.Next(audioResources.Count);
+            string audioResource = audioResources[index];
+
+            // Загрузка и воспроизведение трека
+            mediaPlayer.Open(new Uri($"pack://application:,,,/YourAssemblyName;component/Resources/{audioResource[index]}", UriKind.Absolute));
+            mediaPlayer.Play();
+        }
+
+        private void MediaPlayer_MediaEnded(object sender, EventArgs e)
+        {
+            // Когда трек заканчивается, воспроизводим следующий случайный трек
+            PlayRandomAudio();
+        }
+
         public void StartNewGame(GameState gameState)
         {
             currentGame = new MainGame(gameState, Skins.ProgrammingLanguages);
