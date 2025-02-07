@@ -24,7 +24,8 @@ namespace MEMORY
 	/// </summary>
 	public partial class MainGame : UserControl
     {
-		private MainWindow _mainWindow; //Главное окно
+		private MainMenu _mainMenu;
+		private MainWindow _mainWindow;
 		private GameState _gameState;	//Настройки
 		private Card _firstCard;		//Вторая выбанная карта
 		private Card _secondCard;		//Первая выбранная карта
@@ -37,16 +38,24 @@ namespace MEMORY
 		private bool turn = false;		//Для проверки хода
 		private bool _autoWin = true;
 		private DispatcherTimer _timer; // Таймер для обновления интерфейса
-		public MainGame(GameState gameState, MainWindow mainMenu)
+		public MainGame(GameState gameState, MainMenu mainMenu, MainWindow mainWindow)
 		{
 			InitializeComponent();
 			this.Loaded += MainGame_Loaded;
 			_gameState = gameState;
 			_pairsRightTurn = 0;
-			_mainWindow = mainMenu;
+            _mainMenu = mainMenu;
+			_mainWindow = mainWindow;
 			StartGame(gameState.Skins);
 			ShowCards();
-		}
+
+            _mainWindow.GameExist = true;
+
+            if (_autoWin)
+            {
+				EndGame();
+            }
+        }
 
 		private void MainGame_Loaded(object sender, RoutedEventArgs e)
 		{
@@ -265,7 +274,9 @@ namespace MEMORY
 		private void EndGame()
 		{
 			Result result = new Result(_pastЕense, _pairsTurnCount, _pairsRightTurn, (short)_gameState.GameDifficulty);
+			_mainWindow.GameExist = false;
 			_mainWindow.AddResult(result);
+			_mainMenu.EndGame();
 		}
 
 		private void Page_MouseDown(object sender, MouseButtonEventArgs e)

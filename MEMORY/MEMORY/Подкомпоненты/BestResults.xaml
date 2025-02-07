@@ -17,7 +17,7 @@
 
             <TextBlock Style="{DynamicResource TottalTbStyle}" Text="Лучшие результаты" FontSize="40" Margin="15"/>
 
-            <StackPanel x:Name="ResultsSP" Margin="5"/>
+            <StackPanel x:Name="ResultsSP" Margin="5" Grid.Row="1"/>
 
         </Grid>
     </Border>

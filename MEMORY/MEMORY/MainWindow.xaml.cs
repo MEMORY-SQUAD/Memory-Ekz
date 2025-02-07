@@ -100,9 +100,15 @@ namespace MEMORY
         }
         public void StartNewGame(GameState gameState)
         {
-            currentGame = new MainGame(gameState, this);
-            GameExist = true;
-            MainBorder.Child = currentGame;
+            currentGame = new MainGame(gameState, menu ,this);
+            if(GameExist)
+                MainBorder.Child = currentGame;
+        }
+        public void EndGame()
+        {
+            currentGame = null;
+            GameExist = false;
+            BackMenu();
         }
         public void ContinueGame()
         {

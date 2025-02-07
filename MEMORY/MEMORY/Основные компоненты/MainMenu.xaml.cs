@@ -65,7 +65,11 @@ namespace MEMORY
 			if (result == MessageBoxResult.Yes) 
 				_mainWindow.Close();
 		}
-
+		public void EndGame()
+		{
+			ContinueBt.IsEnabled = false;
+			_mainWindow.EndGame();
+		}
         private void Results_Click(object sender, RoutedEventArgs e)
         {
 			MainBorder.Child = new BestResults(_mainWindow.ResultsList);

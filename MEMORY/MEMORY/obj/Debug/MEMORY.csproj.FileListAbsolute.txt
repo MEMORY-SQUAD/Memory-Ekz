@@ -64,3 +64,69 @@ C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Soun
 C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Sounds\rightCard.mp3
 C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Sounds\win.mp3
 C:\Users\Artur\source\repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Sounds\wrongCard.mp3
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Sounds\aerhead-shizuka.mp3
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Sounds\barradeen-boku-no-love.mp3
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Sounds\cardFlip.mp3
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Sounds\ghostrifter-morning-routine.mp3
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Sounds\punch.mp3
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Sounds\rightCard.mp3
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Sounds\win.mp3
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Sounds\wrongCard.mp3
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\MEMORY.exe.config
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\MEMORY.exe
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\MEMORY.pdb
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Buffers.dll
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.IO.Pipelines.dll
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Memory.dll
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Text.Json.dll
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.ValueTuple.dll
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Buffers.xml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.IO.Pipelines.xml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Memory.xml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Text.Json.xml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\bin\Debug\System.ValueTuple.xml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.csproj.AssemblyReference.cache
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\CardThemes.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Темы\Standart.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Card.g.cs
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MainWindow.g.cs
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\ResultCard.g.cs
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Основные компоненты\MainGame.g.cs
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Основные компоненты\MainMenu.g.cs
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\Authors.g.cs
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\BestResults.g.cs
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\NewGame.g.cs
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\Settings.g.cs
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\App.g.cs
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY_Content.g.cs
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY_MarkupCompile.cache
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY_MarkupCompile.lref
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\App.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Card.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MainWindow.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\ResultCard.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Основные компоненты\MainGame.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Основные компоненты\MainMenu.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\Authors.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\BestResults.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\NewGame.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Подкомпоненты\Settings.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Темы\Dark.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\Темы\Light.baml
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.g.resources
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.Properties.Resources.resources
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.csproj.GenerateResource.cache
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.csproj.CoreCompileInputs.cache
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.csproj.Up2Date
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.exe
+C:\Users\203 Student\Source\Repos\MEMORY-SQUAD\Memory-Ekz\MEMORY\MEMORY\obj\Debug\MEMORY.pdb

@@ -13,9 +13,9 @@
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Style="{DynamicResource TottalTbStyle}" Grid.Column="0" x:Name="NumTb"/>
-        <TextBlock Style="{DynamicResource TottalTbStyle}" Grid.Column="1" x:Name="TimeTb"/>
-        <TextBlock Style="{DynamicResource TottalTbStyle}" Grid.Column="2" x:Name="DifficultTb" HorizontalAlignment="Right"/>
+        <TextBlock FontSize="40" Style="{DynamicResource TottalTbStyle}" Grid.Column="0" x:Name="NumTb" Margin="10"/>
+        <TextBlock FontSize="40" Style="{DynamicResource TottalTbStyle}" Grid.Column="1" x:Name="TimeTb" Margin="10"/>
+        <TextBlock FontSize="40" Style="{DynamicResource TottalTbStyle}" Grid.Column="2" x:Name="DifficultTb" HorizontalAlignment="Right" Margin="10"/>
 
     </Grid>
 </UserControl>

@@ -23,9 +23,16 @@ namespace MEMORY
         public BestResults(List<Result> results)
         {
             InitializeComponent();
+
+            foreach (Result result in results)
+            {
+
+            }
+
             for(int i = 0; i < results.Count % 10; i++)
             {
                 ResultCard resultCard = new ResultCard(results[i], i+1);
+                ResultsSP.Children.Add(resultCard);
             }
         }
     }
