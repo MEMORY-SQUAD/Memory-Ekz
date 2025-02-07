@@ -36,7 +36,7 @@ namespace MEMORY
 		private int _pastЕense;			//Прошедшее время
 		private bool isFliped = false;	//Для первоначального переворота карт
 		private bool turn = false;		//Для проверки хода
-		private bool _autoWin = true;
+		private bool _autoWin = false;
 		private DispatcherTimer _timer; // Таймер для обновления интерфейса
 		public MainGame(GameState gameState, MainMenu mainMenu, MainWindow mainWindow)
 		{

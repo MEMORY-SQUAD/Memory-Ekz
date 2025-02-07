@@ -23,15 +23,10 @@ namespace MEMORY
         public BestResults(List<Result> results)
         {
             InitializeComponent();
-
-            foreach (Result result in results)
+            int i = 0;
+            foreach (Result result in results.OrderBy(b => b.CalculateRating()).Take(10))
             {
-
-            }
-
-            for(int i = 0; i < results.Count % 10; i++)
-            {
-                ResultCard resultCard = new ResultCard(results[i], i+1);
+                ResultCard resultCard = new ResultCard(result, ++i);
                 ResultsSP.Children.Add(resultCard);
             }
         }
