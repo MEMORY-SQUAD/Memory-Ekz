@@ -39,8 +39,8 @@ namespace MEMORY
 
             localSettings = new LocalSettings();
             localSettings.LoadFromRegistry();
-            menu = new MainMenu(this, localSettings);
-            MainFrame.Navigate(menu);
+            menu = new MainMenu(this);
+            MainBorder.Child = menu;
 
             random = new Random((int)DateTime.Now.Ticks);
             audioResources = new List<string> { Directory.GetCurrentDirectory() + "\\Sounds\\aerhead-shizuka.mp3" };
@@ -97,26 +97,20 @@ namespace MEMORY
         {
             ResultsList.Add(result);
             Result.SerializeResults(ResultsList);
-            menu.UpdateBestResults();
         }
         public void StartNewGame(GameState gameState)
         {
-            MainFrame.Content = null;
             currentGame = new MainGame(gameState, this);
             GameExist = true;
-            MainFrame.Navigate(currentGame);
-        }
-        public void ExitGame()
-        {
-            MainFrame.Navigate(menu);
+            MainBorder.Child = currentGame;
         }
         public void ContinueGame()
         {
-            MainFrame.Navigate(currentGame);
+            MainBorder.Child = currentGame;
         }
         public void BackMenu()
         {
-            MainFrame.Navigate(menu);
+            MainBorder.Child = menu;
         }
     }
 }

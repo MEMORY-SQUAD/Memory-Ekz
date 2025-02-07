@@ -71,7 +71,7 @@ namespace MEMORY
         }
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-
+            _menu.ShowResults();
         }
     }
 }

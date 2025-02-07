@@ -21,7 +21,7 @@ namespace MEMORY
     public partial class NewGame : UserControl
     {
         MainWindow _mainWindow;
-        MainMenu MainMenu;
+        MainMenu _mainMenu;
         GameState _gameState;
         public NewGame(MainWindow mainWindow, MainMenu mainMenu)
         {
@@ -32,6 +32,7 @@ namespace MEMORY
             _gameState.GameDifficulty = GameDifficulty.easily;
             _gameState.Skins = Skins.Cars;
             _mainWindow = mainWindow;
+            _mainMenu = mainMenu;
         }
 
         private void InitializeCartSyle()
@@ -50,7 +51,7 @@ namespace MEMORY
 
         private void ExutBt_Click(object sender, RoutedEventArgs e)
         {
-
+            _mainMenu.ShowResults();
         }
 
         private void StartBt_Click(object sender, RoutedEventArgs e)

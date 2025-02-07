@@ -21,22 +21,12 @@ namespace MEMORY
 	public partial class MainMenu : UserControl
     {
 		MainWindow _mainWindow;
-		BestResults _bestResults;
 		public MainMenu(MainWindow mainWindow)
 		{
 			InitializeComponent();
             Loaded += MainMenu_Loaded;
             _mainWindow = mainWindow;
-            _bestResults = new BestResults(_mainWindow.ResultsList);
-            MainFrame.Navigate(_bestResults);
-        }
-		public void GoBack()
-		{
-
-		}
-		public void UpdateBestResults()
-		{
-			_bestResults = new BestResults(_mainWindow.ResultsList);
+			ShowResults();
         }
         private void MainMenu_Loaded(object sender, RoutedEventArgs e)
         {
@@ -45,10 +35,13 @@ namespace MEMORY
             else
                 ContinueBt.IsEnabled = true;
         }
-
+        public void ShowResults()
+        {
+			MainBorder.Child = new BestResults(_mainWindow.ResultsList);
+        }
         private void StartBt_Click(object sender, RoutedEventArgs e)
 		{
-
+			MainBorder.Child = new NewGame(_mainWindow, this);
 		}
 
 		private void ContinueBt_Click(object sender, RoutedEventArgs e)
@@ -58,12 +51,12 @@ namespace MEMORY
 
 		private void SettingsBt_Click(object sender, RoutedEventArgs e)
 		{
-
+			MainBorder.Child = new Settings(_mainWindow, this);
 		}
 
 		private void AuthorsBt_Click(object sender, RoutedEventArgs e)
 		{
-
+			MainBorder.Child = new Authors(_mainWindow, this);
 		}
 
 		private void ExitBt_Click(object sender, RoutedEventArgs e)
@@ -75,7 +68,7 @@ namespace MEMORY
 
         private void Results_Click(object sender, RoutedEventArgs e)
         {
-			MainFrame.Navigate(_bestResults);
+			MainBorder.Child = new BestResults(_mainWindow.ResultsList);
         }
     }
 }
