@@ -10,7 +10,27 @@
 
     <Border CornerRadius="20" Background="{DynamicResource PagesBackground}">
         <Grid Margin="50">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             
+            <TextBlock HorizontalAlignment="Right" Text="Глава разработки:" FontSize="50" Margin="20" Grid.Row="0" Style="{DynamicResource TottalTbStyle}"/>
+            <TextBlock HorizontalAlignment="Right" Text="Дизайнер:" FontSize="50" Margin="20" Grid.Row="1" Style="{DynamicResource TottalTbStyle}"/>
+            <TextBlock HorizontalAlignment="Right" Text="Разработчики:" FontSize="50" Margin="20" Grid.Row="2" Style="{DynamicResource TottalTbStyle}"/>
+
+            <TextBlock Grid.Column="1" Text="Ваккер Артур" FontSize="50" Margin="20" Grid.Row="0" Style="{DynamicResource TottalTbStyle}"/>
+            <TextBlock Grid.Column="1" Text="Вагин Кирилл" FontSize="50" Margin="20" Grid.Row="1" Style="{DynamicResource TottalTbStyle}"/>
+            <TextBlock Grid.Column="1" Text="Витчинов Ярослав" FontSize="50" Margin="20" Grid.Row="2" Style="{DynamicResource TottalTbStyle}"/>
+            <TextBlock Grid.Column="1" Text="Полунин Максим" FontSize="50" Margin="20" Grid.Row="3" Style="{DynamicResource TottalTbStyle}"/>
         </Grid>
     </Border>
 </UserControl>
