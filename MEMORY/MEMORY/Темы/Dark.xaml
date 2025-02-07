@@ -128,10 +128,10 @@
     </Style>
 
 
-    <SolidColorBrush x:Key="MainMenuBackground" Color="DarkGray"/>
+    <SolidColorBrush x:Key="MainMenuBackground" Color="#292929"/>
     <SolidColorBrush x:Key="BorderMenuBackground" Color="Black"/>
     <SolidColorBrush x:Key="PagesBackground" Color="Gray"/>
-    <SolidColorBrush x:Key="GameBackground" Color="DarkGray"/>
+    <SolidColorBrush x:Key="GameBackground" Color="#292929"/>
 
     <SolidColorBrush x:Key="TotalForeGround" Color="White"/>
 </ResourceDictionary>

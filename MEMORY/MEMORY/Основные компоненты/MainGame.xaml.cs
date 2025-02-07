@@ -173,9 +173,9 @@ namespace MEMORY
 					int index = random.Next(ints.Count);
 					listValue.Add(ints[index]);
 					listValue.Add(ints[index]);
-					ints.Remove(index);
+					ints.RemoveAt(index);
 				}
-				for (int i = 0; i < heightGameGrid;i++)
+				for (int i = 0; i < heightGameGrid; i++)
 				{
 					for (int j = 0; j < widthGameGrid; j++)
 					{
@@ -198,14 +198,14 @@ namespace MEMORY
 			{
 				MessageBox.Show(ex.Message, "MainGame-FillingGameField: eror");
 			}
-
-
-
 		}
 		private async void Card_MouseDown(object sender, MouseButtonEventArgs e)
 		{
 
 			var card = sender as Card;
+
+			if (card == _firstCard)
+				return;
 
             PlayFlip();
 
@@ -277,7 +277,7 @@ namespace MEMORY
 		private void ExitBt_Click(object sender, RoutedEventArgs e)
 		{
 			_timer.Stop();
-			_mainWindow.ExitGame();
+			_mainWindow.BackMenu();
 		}
 
 		private void RetryBt_Click(object sender, RoutedEventArgs e)
