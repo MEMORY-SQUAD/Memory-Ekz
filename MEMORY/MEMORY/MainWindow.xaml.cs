@@ -21,14 +21,16 @@ namespace MEMORY
     /// </summary>
     public partial class MainWindow : Window
     {
-        public LocalSettings localSettings;
-        MainGame currentGame;
-        MainMenu menu;
+        public LocalSettings LocalSettings;
         public List<Result> ResultsList { get; }
         public bool GameExist { get; set; }
-        private MediaPlayer mediaPlayer;
-        private List<string> audioResources;
-        private Random random;
+        MainGame _currentGame;
+        MainMenu _menu;
+        private MediaPlayer _musicMediaPlayer;
+        private Random _random;
+        private List<string> _audioResources;
+        private List<string> _playList;
+        private int _indexCurrentMusic;
 
         public MainWindow()
         {
@@ -37,16 +39,20 @@ namespace MEMORY
             ResultsList = Result.DeserializeResults();
             GameExist = false;
 
-            localSettings = new LocalSettings();
-            localSettings.LoadFromRegistry();
-            menu = new MainMenu(this);
-            MainBorder.Child = menu;
+            LocalSettings = new LocalSettings();
+            LocalSettings.LoadFromRegistry();
+            _menu = new MainMenu(this);
+            MainBorder.Child = _menu;
 
-            random = new Random((int)DateTime.Now.Ticks);
-            audioResources = new List<string> { Directory.GetCurrentDirectory() + "\\Sounds\\aerhead-shizuka.mp3" };
-            mediaPlayer = new MediaPlayer();
-            mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
-            PlayRandomAudio();
+            _random = new Random((int)DateTime.Now.Ticks);
+
+            string thisDirectory = Directory.GetCurrentDirectory();
+            //_audioResources = new List<string> { thisDirectory + "\\Sounds\\aerhead-shizuka.mp3" };
+            //_musicMediaPlayer = new MediaPlayer();
+            //_musicMediaPlayer.MediaEnded += EndTrack;
+
+            //CreateMusicPlayList();
+            //PlayNextTrack();
 
             //Properties.Resources.ResourceManager.;
 
@@ -70,28 +76,60 @@ namespace MEMORY
             //    File.Delete(tempFilePath);
             //};
         }
-        private void PlayRandomAudio()
+
+        /// <summary>
+        /// Создаёт Плейлист для проигрыания
+        /// </summary>
+        /// <returns></returns>
+        private List<string> CreateMusicPlayList()
         {
-            if (audioResources.Count == 0)
+            int size = _audioResources.Count;
+
+            if (size == 0)
+                return null;
+
+            _random = new Random((int)DateTime.Now.Ticks);
+            string[] strings = new string[] { };
+            _audioResources.CopyTo(strings);
+
+            List<string> copyResourse = strings.ToList();
+            List<string> playlist = new List<string>();
+
+            for (int i = 0; i < size; i++)
+            {
+                int index = _random.Next(0, size);
+                playlist.Add(copyResourse[index]);
+                copyResourse.RemoveAt(index);
+            }
+
+            return playlist;
+        }
+
+        private void CreateNewOlaylist()
+        {
+            if (_audioResources.Count == 0)
                 return;
 
+
+        }
+        private void PlayNextTrack()
+        {
             // Выбор случайного трека
-            int index = random.Next(audioResources.Count);
-            string audioResource = audioResources[index];
+            int index = _random.Next(_audioResources.Count);
+            string audioResource = _audioResources[index];
 
             // Загрузка и воспроизведение трека
-            mediaPlayer.Volume = localSettings.MusicVolume / 100.0;
-            mediaPlayer.Open(new Uri(audioResource));
-            mediaPlayer.Play();
+            _musicMediaPlayer.Volume = LocalSettings.MusicVolume / 100.0;
+            _musicMediaPlayer.Open(new Uri(audioResource));
+            _musicMediaPlayer.Play();
+        }
+        private void EndTrack(object sender, EventArgs e)
+        {
+
         }
         public void RedactVolumnMusic()
         {
-            mediaPlayer.Volume = localSettings.MusicVolume / 100.0;
-        }
-        private void MediaPlayer_MediaEnded(object sender, EventArgs e)
-        {
-            // Когда трек заканчивается, воспроизводим следующий случайный трек
-            PlayRandomAudio();
+            _musicMediaPlayer.Volume = LocalSettings.MusicVolume / 100.0;
         }
         public void AddResult(Result result)
         {
@@ -100,23 +138,43 @@ namespace MEMORY
         }
         public void StartNewGame(GameState gameState)
         {
-            currentGame = new MainGame(gameState, menu ,this);
+            _currentGame = new MainGame(gameState, _menu ,this);
             if(GameExist)
-                MainBorder.Child = currentGame;
+                MainBorder.Child = _currentGame;
         }
         public void EndGame()
         {
-            currentGame = null;
+            _currentGame = null;
             GameExist = false;
             BackMenu();
         }
         public void ContinueGame()
         {
-            MainBorder.Child = currentGame;
+            MainBorder.Child = _currentGame;
         }
         public void BackMenu()
         {
-            MainBorder.Child = menu;
+            MainBorder.Child = _menu;
+        }
+        public void PlayCardFlip()
+        {
+
+        }
+        public void PlayIncorrectParis()
+        {
+
+        }
+        public void PlayCorrectParis()
+        {
+
+        }
+        public void PlayWin()
+        {
+
+        }
+        public void PlayButtonPunch()
+        {
+
         }
     }
 }

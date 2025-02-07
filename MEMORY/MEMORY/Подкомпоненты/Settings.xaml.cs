@@ -30,7 +30,7 @@ namespace MEMORY
         public Settings(MainWindow mainWindow, MainMenu mainMenu)
         {
             InitializeComponent();
-            _settings = mainWindow.localSettings;
+            _settings = mainWindow.LocalSettings;
             VolumeMusikSlider.Value = _settings.MusicVolume;
             VolumeSlider.Value = _settings.SoundVolume;
             _mainWindow = mainWindow;

@@ -242,7 +242,7 @@ namespace MEMORY
 		{
 			MediaPlayer mediaPlayer = new MediaPlayer();
 			mediaPlayer.Open(new Uri(Directory.GetCurrentDirectory() + "\\Sounds\\cardFlip.mp3"));
-			mediaPlayer.Volume = _mainWindow.localSettings.SoundVolume / 100;
+			mediaPlayer.Volume = _mainWindow.LocalSettings.SoundVolume / 100;
 			mediaPlayer.Play();
 		}
 		private void CheckForMatch()
