@@ -18,7 +18,7 @@ namespace MEMORY
     /// <summary>
     /// Логика взаимодействия для BestResults.xaml
     /// </summary>
-    public partial class BestResults : Page
+    public partial class BestResults : UserControl
     {
         public BestResults(List<Result> results)
         {

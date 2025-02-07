@@ -7,11 +7,11 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using Microsoft.Win32;
 
 namespace MEMORY
 {
-
     public class LocalSettings
     {
         // Переменные: Тема, громкость звуков, громкость музыки
@@ -143,7 +143,7 @@ namespace MEMORY
     //Внешний вид карт
     public enum Skins
     {
-        Standart,
+        Cars,
         ProgrammingLanguages
     }
 

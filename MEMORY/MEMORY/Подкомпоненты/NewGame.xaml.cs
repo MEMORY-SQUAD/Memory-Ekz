@@ -18,18 +18,34 @@ namespace MEMORY
     /// <summary>
     /// Логика взаимодействия для NewGame.xaml
     /// </summary>
-    public partial class NewGame : Page
+    public partial class NewGame : UserControl
     {
         MainWindow _mainWindow;
+        MainMenu MainMenu;
         GameState _gameState;
-        public NewGame(MainWindow mainWindow)
+        public NewGame(MainWindow mainWindow, MainMenu mainMenu)
         {
             InitializeComponent();
+            InitializeCartSyle();
             StartBt.Background = Brushes.Green;
-            _gameState = new GameState(Skins.Standart, GameDifficulty.easily);
+            _gameState = new GameState(Skins.Cars, GameDifficulty.easily);
             _gameState.GameDifficulty = GameDifficulty.easily;
-            _gameState.Skins = Skins.ProgrammingLanguages;
+            _gameState.Skins = Skins.Cars;
             _mainWindow = mainWindow;
+        }
+
+        private void InitializeCartSyle()
+        {
+            List<string> cart = new List<string> { "Языки программирования", "Марки автомобилей" };
+            List<Skins> skins = new List<Skins> { Skins.ProgrammingLanguages, Skins.Cars };
+
+            for (int i = 0; i < skins.Count; i++)
+            {
+                ComboBoxItem item = new ComboBoxItem { Content = cart[i], Tag = skins[i] };
+                SelectCSCb.Items.Add(item);
+            }
+
+            SelectCSCb.SelectedIndex = 0;
         }
 
         private void ExutBt_Click(object sender, RoutedEventArgs e)
@@ -39,6 +55,7 @@ namespace MEMORY
 
         private void StartBt_Click(object sender, RoutedEventArgs e)
         {
+            _gameState.Skins = (Skins)((ComboBoxItem)SelectCSCb.SelectedItem).Tag;
             _mainWindow.StartNewGame(_gameState);
         }
 

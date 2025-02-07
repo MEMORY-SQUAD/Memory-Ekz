@@ -18,20 +18,22 @@ namespace MEMORY
 	/// <summary>
 	/// Логика взаимодействия для MainMenu.xaml
 	/// </summary>
-	public partial class MainMenu : Page
-	{
+	public partial class MainMenu : UserControl
+    {
 		MainWindow _mainWindow;
 		BestResults _bestResults;
-		LocalSettings _localSettings;
-		public MainMenu(MainWindow mainWindow, LocalSettings localSettings)
+		public MainMenu(MainWindow mainWindow)
 		{
 			InitializeComponent();
             Loaded += MainMenu_Loaded;
             _mainWindow = mainWindow;
             _bestResults = new BestResults(_mainWindow.ResultsList);
-			_localSettings = localSettings;
             MainFrame.Navigate(_bestResults);
         }
+		public void GoBack()
+		{
+
+		}
 		public void UpdateBestResults()
 		{
 			_bestResults = new BestResults(_mainWindow.ResultsList);
@@ -46,7 +48,7 @@ namespace MEMORY
 
         private void StartBt_Click(object sender, RoutedEventArgs e)
 		{
-			MainFrame.Navigate(new NewGame(_mainWindow));
+
 		}
 
 		private void ContinueBt_Click(object sender, RoutedEventArgs e)
@@ -56,12 +58,12 @@ namespace MEMORY
 
 		private void SettingsBt_Click(object sender, RoutedEventArgs e)
 		{
-			MainFrame.Navigate(new Settings(_localSettings, _mainWindow));
+
 		}
 
 		private void AuthorsBt_Click(object sender, RoutedEventArgs e)
 		{
-			MainFrame.Navigate(new Authors());
+
 		}
 
 		private void ExitBt_Click(object sender, RoutedEventArgs e)

@@ -18,9 +18,9 @@ namespace MEMORY
     /// <summary>
     /// Логика взаимодействия для Authors.xaml
     /// </summary>
-    public partial class Authors : Page
+    public partial class Authors : UserControl
     {
-        public Authors()
+        public Authors(MainWindow mainWindow, MainMenu mainMenu)
         {
             InitializeComponent();
         }

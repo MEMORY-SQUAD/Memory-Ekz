@@ -80,13 +80,13 @@ namespace MEMORY
             string audioResource = audioResources[index];
 
             // Загрузка и воспроизведение трека
-            mediaPlayer.Volume = localSettings.MusicVolume;
+            mediaPlayer.Volume = localSettings.MusicVolume / 100.0;
             mediaPlayer.Open(new Uri(audioResource));
             mediaPlayer.Play();
         }
         public void RedactVolumnMusic()
         {
-            mediaPlayer.Volume = localSettings.MusicVolume;
+            mediaPlayer.Volume = localSettings.MusicVolume / 100.0;
         }
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)
         {
@@ -101,6 +101,7 @@ namespace MEMORY
         }
         public void StartNewGame(GameState gameState)
         {
+            MainFrame.Content = null;
             currentGame = new MainGame(gameState, this);
             GameExist = true;
             MainFrame.Navigate(currentGame);
