@@ -18,38 +18,45 @@ namespace MEMORY
 	/// <summary>
 	/// Логика взаимодействия для MainMenu.xaml
 	/// </summary>
-	public partial class MainMenu : Page
-	{
+	public partial class MainMenu : UserControl
+    {
 		MainWindow _mainWindow;
-		BestResults _bestResults;
-		LocalSettings _localSettings;
-		public MainMenu(MainWindow mainWindow, LocalSettings localSettings)
+		public MainMenu(MainWindow mainWindow)
 		{
-			_mainWindow = mainWindow;
 			InitializeComponent();
-			_bestResults = new BestResults();
-			_localSettings = localSettings;
-            MainFrame.Navigate(_bestResults);
+            Loaded += MainMenu_Loaded;
+            _mainWindow = mainWindow;
+			ShowResults();
         }
-
-		private void StartBt_Click(object sender, RoutedEventArgs e)
+        private void MainMenu_Loaded(object sender, RoutedEventArgs e)
+        {
+			if (!_mainWindow.GameExist)
+				ContinueBt.IsEnabled = false;
+            else
+                ContinueBt.IsEnabled = true;
+        }
+        public void ShowResults()
+        {
+			MainBorder.Child = new BestResults(_mainWindow.ResultsList);
+        }
+        private void StartBt_Click(object sender, RoutedEventArgs e)
 		{
-			MainFrame.Navigate(new NewGame(_mainWindow));
+			MainBorder.Child = new NewGame(_mainWindow, this);
 		}
 
 		private void ContinueBt_Click(object sender, RoutedEventArgs e)
 		{
-
+			_mainWindow.ContinueGame();
         }
 
 		private void SettingsBt_Click(object sender, RoutedEventArgs e)
 		{
-			MainFrame.Navigate(new Settings(_localSettings));
+			MainBorder.Child = new Settings(_mainWindow, this);
 		}
 
 		private void AuthorsBt_Click(object sender, RoutedEventArgs e)
 		{
-			MainFrame.Navigate(new Authors());
+			MainBorder.Child = new Authors(_mainWindow, this);
 		}
 
 		private void ExitBt_Click(object sender, RoutedEventArgs e)
@@ -58,10 +65,14 @@ namespace MEMORY
 			if (result == MessageBoxResult.Yes) 
 				_mainWindow.Close();
 		}
-
+		public void EndGame()
+		{
+			ContinueBt.IsEnabled = false;
+			_mainWindow.EndGame();
+		}
         private void Results_Click(object sender, RoutedEventArgs e)
         {
-			MainFrame.Navigate(_bestResults);
+			MainBorder.Child = new BestResults(_mainWindow.ResultsList);
         }
     }
 }

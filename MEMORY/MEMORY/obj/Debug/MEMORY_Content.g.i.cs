@@ -10,6 +10,11 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/aerhead-shizuka.mp3")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/barradeen-boku-no-love.mp3")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/cardflip.mp3")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/ghostrifter-morning-routine.mp3")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/punch.mp3")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/rightcard.mp3")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/win.mp3")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/wrongcard.mp3")]
 
 

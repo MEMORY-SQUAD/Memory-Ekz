@@ -18,11 +18,17 @@ namespace MEMORY
     /// <summary>
     /// Логика взаимодействия для BestResults.xaml
     /// </summary>
-    public partial class BestResults : Page
+    public partial class BestResults : UserControl
     {
-        public BestResults()
+        public BestResults(List<Result> results)
         {
             InitializeComponent();
+            int i = 0;
+            foreach (Result result in results.OrderBy(b => b.CalculateRating()).Take(10))
+            {
+                ResultCard resultCard = new ResultCard(result, ++i);
+                ResultsSP.Children.Add(resultCard);
+            }
         }
     }
 }

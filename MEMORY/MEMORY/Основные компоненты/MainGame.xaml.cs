@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -21,53 +22,76 @@ namespace MEMORY
 	/// <summary>
 	/// Логика взаимодействия для MainGame.xaml
 	/// </summary>
-	public partial class MainGame : Page
-	{
-		private GameState _gameState;
-		private Card _firstCard;
-		private Card _secondCard;
-		private List<Card> _cards;
-		private int _pairsFound;
-		private int _gridSize;
-		private bool isFliped = false;
-		private bool turn = false;
-        private DispatcherTimer _timer; // Таймер для обновления интерфейса
-        private DateTime _startTime;   // Время старта
-        public MainGame(GameState gameState, Skins skins)
+	public partial class MainGame : UserControl
+    {
+		private MainMenu _mainMenu;
+		private MainWindow _mainWindow;
+		private GameState _gameState;	//Настройки
+		private Card _firstCard;		//Вторая выбанная карта
+		private Card _secondCard;		//Первая выбранная карта
+		private List<Card> _cards;		//Карты
+		private int _pairsRightTurn;	//Количество найденных пар
+		private int _pairsTurnCount;    //Колтчество Ходов
+		private int _gridSize;			//Размер поля
+		private int _pastЕense;			//Прошедшее время
+		private bool isFliped = false;	//Для первоначального переворота карт
+		private bool turn = false;		//Для проверки хода
+		private bool _autoWin = false;
+		private DispatcherTimer _timer; // Таймер для обновления интерфейса
+		public MainGame(GameState gameState, MainMenu mainMenu, MainWindow mainWindow)
 		{
 			InitializeComponent();
+			this.Loaded += MainGame_Loaded;
 			_gameState = gameState;
-			_pairsFound = 0;
-			StartGame(skins);
-            ShowCards();
+			_pairsRightTurn = 0;
+            _mainMenu = mainMenu;
+			_mainWindow = mainWindow;
+			StartGame(gameState.Skins);
+			ShowCards();
+
+            _mainWindow.GameExist = true;
+
+            if (_autoWin)
+            {
+				EndGame();
+            }
         }
+
+		private void MainGame_Loaded(object sender, RoutedEventArgs e)
+		{
+			if(_timer != null)
+				_timer.Start();
+		}
+
 		private void StartTimer()
 		{
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromSeconds(1); // Интервал обновления 1 секунда
-            _timer.Tick += Timer_Tick;
+			_timer = new DispatcherTimer();
+			_timer.Interval = TimeSpan.FromSeconds(1); // Интервал обновления 1 секунда
+			_timer.Tick += Timer_Tick;
 
-            // Установка времени старта и запуск таймера
-            _startTime = DateTime.Now;
-            _timer.Start();
-        }
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            var elapsed = DateTime.Now - _startTime;
-            TimerTextBlock.Text = $"Таймер: {elapsed.Minutes:D2}:{elapsed.Seconds:D2}";
-        }
-        private async void ShowCards()
-        {
+			// Установка времени старта и запуск таймера
+			_pastЕense = 0;
+			_timer.Start();
+		}
+		private void Timer_Tick(object sender, EventArgs e)
+		{
+			TimerTextBlock.Text = $"Таймер: {_pastЕense/60:D2}:{_pastЕense%60:D2}";
+			_pastЕense++;
+		}
+		private async void ShowCards()
+		{
 			this.IsHitTestVisible = false;
-            await Task.Delay(100);
-            foreach (Card card in _cards)
-                card.Flip();
-            await Task.Delay(10000);
-            foreach (Card card in _cards)
+			PlayFlip();
+			await Task.Delay(100);
+			foreach (Card card in _cards)
 				card.Flip();
-            this.IsHitTestVisible = true;
-            StartTimer();
-        }
+			await Task.Delay(1000);
+			PlayFlip();
+			foreach (Card card in _cards)
+				card.Flip();
+			this.IsHitTestVisible = true;
+			StartTimer();
+		}
 
 		private void StartGame(Skins skins)
 		{
@@ -88,9 +112,9 @@ namespace MEMORY
 						break;
 				}
 				_gridSize = heightGameGrid * widthGameGrid;
-                _cards = new List<Card>();
+				_cards = new List<Card>();
 
-                СreatingGameField(heightGameGrid, widthGameGrid);
+				СreatingGameField(heightGameGrid, widthGameGrid);
 				FillingGameField(heightGameGrid, widthGameGrid, skins);
 			}
 			catch (Exception ex)
@@ -98,7 +122,7 @@ namespace MEMORY
 				MessageBox.Show(ex.Message,"MainGame-StartGame: eror");
 			}
 		}
-        private void СreatingGameField(int heightGameGrid, int widthGameGrid)
+		private void СreatingGameField(int heightGameGrid, int widthGameGrid)
 		{
 			try
 			{
@@ -126,37 +150,48 @@ namespace MEMORY
 			}
 
 		}
-        private void FillingGameField(int heightGameGrid, int widthGameGrid, Skins skin)
+		private void FillingGameField(int heightGameGrid, int widthGameGrid, Skins skin)
 		{
 			try
 			{
 				List<int> listValue = new List<int>();
 
-                ResourceDictionary newTheme = null;
+				ResourceDictionary newTheme = null;
 
-                switch (skin)
-                {
-                    case Skins.ProgrammingLanguages:
-                        newTheme = (ResourceDictionary)this.Resources["LangaguesCards"];
-                        break;
-                }
-
-
-                for (int i = 0; i < heightGameGrid * widthGameGrid / 2; i++)
+				switch (_gameState.Skins)
 				{
-					listValue.Add(i);
-					listValue.Add(i);
+					case Skins.ProgrammingLanguages:
+						newTheme = (ResourceDictionary)this.Resources["LangaguesCards"];
+						break;
+					case Skins.Cars:
+						newTheme = (ResourceDictionary)this.Resources["Cars"];
+						break;
+				}
+
+				List<int> ints = new List<int>();
+
+				for(int i = 0; i < 16;i++)
+				{
+					ints.Add(i);
 				}
 
 				Random random = new Random((System.DateTime.Now.Millisecond));
-				for (int i = 0; i < heightGameGrid;i++)
+
+				for (int i = 0; i < heightGameGrid * widthGameGrid / 2; i++)
+				{
+					int index = random.Next(ints.Count);
+					listValue.Add(ints[index]);
+					listValue.Add(ints[index]);
+					ints.RemoveAt(index);
+				}
+				for (int i = 0; i < heightGameGrid; i++)
 				{
 					for (int j = 0; j < widthGameGrid; j++)
 					{
 						int index = random.Next(0, listValue.Count);;
 						Card card = new Card((Brush)newTheme["Shirt"], (Brush)newTheme[$"Card{listValue[index]+1}Image"]);
 						card.Margin = new Thickness(5);
-                        card.Value = listValue[index];
+						card.Value = listValue[index];
 						card.MouseDown += Card_MouseDown;
 						listValue.RemoveAt(index);
 						GameGrid.Children.Add(card);
@@ -172,15 +207,18 @@ namespace MEMORY
 			{
 				MessageBox.Show(ex.Message, "MainGame-FillingGameField: eror");
 			}
-
-
-
 		}
 		private async void Card_MouseDown(object sender, MouseButtonEventArgs e)
 		{
+
 			var card = sender as Card;
 
-			if (!card.isFlipped || turn)
+			if (card == _firstCard)
+				return;
+
+            PlayFlip();
+
+            if (!card.isFlipped || turn)
 				return;
 
 			card.Flip();
@@ -191,12 +229,21 @@ namespace MEMORY
 			}
 			else
 			{
+				_pairsTurnCount++;
+				MoveCountTextBlock.Text = $"Ходы: {_pairsTurnCount}";
 				turn = true;
 				_secondCard = card;
-                await Task.Delay(1000);
-                CheckForMatch();
-                turn = false;
-            }
+				await Task.Delay(1000);
+				CheckForMatch();
+				turn = false;
+			}
+		}
+		private void PlayFlip()
+		{
+			MediaPlayer mediaPlayer = new MediaPlayer();
+			mediaPlayer.Open(new Uri(Directory.GetCurrentDirectory() + "\\Sounds\\cardFlip.mp3"));
+			mediaPlayer.Volume = _mainWindow.localSettings.SoundVolume / 100;
+			mediaPlayer.Play();
 		}
 		private void CheckForMatch()
 		{
@@ -205,12 +252,15 @@ namespace MEMORY
 				GameGrid.Children.Remove(_firstCard);
 				GameGrid.Children.Remove(_secondCard);
 
-				_pairsFound++;
+				_pairsRightTurn++;
+				MoveRightTextBlock.Text = $"Найденные пары: {_pairsRightTurn}";
 
-				if (_pairsFound == _gridSize / 2)
+				if (_pairsRightTurn == _gridSize / 2)
 				{
 					MessageBox.Show("Поздравляем! Вы нашли все пары!");
+					EndGame();
 				}
+
 			}
 			else
 			{
@@ -223,13 +273,27 @@ namespace MEMORY
 		}
 		private void EndGame()
 		{
-
+			Result result = new Result(_pastЕense, _pairsTurnCount, _pairsRightTurn, (short)_gameState.GameDifficulty);
+			_mainWindow.GameExist = false;
+			_mainWindow.AddResult(result);
+			_mainMenu.EndGame();
 		}
 
-        private void Page_MouseDown(object sender, MouseButtonEventArgs e)
-        {
+		private void Page_MouseDown(object sender, MouseButtonEventArgs e)
+		{
 			if(isFliped)
 				e.Handled = true;
-        }
-    }
+		}
+
+		private void ExitBt_Click(object sender, RoutedEventArgs e)
+		{
+			_timer.Stop();
+			_mainWindow.BackMenu();
+		}
+
+		private void RetryBt_Click(object sender, RoutedEventArgs e)
+		{
+			_mainWindow.StartNewGame(_gameState);
+		}
+	}
 }

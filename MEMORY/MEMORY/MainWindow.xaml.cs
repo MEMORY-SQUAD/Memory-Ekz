@@ -21,26 +21,32 @@ namespace MEMORY
     /// </summary>
     public partial class MainWindow : Window
     {
-        LocalSettings localSettings;
+        public LocalSettings localSettings;
         MainGame currentGame;
         MainMenu menu;
-        MediaPlayer mediaPlayer;
-        List<string> audioResources;
-        Random random;
-        public List<Result> Results { get; }
+        public List<Result> ResultsList { get; }
+        public bool GameExist { get; set; }
+        private MediaPlayer mediaPlayer;
+        private List<string> audioResources;
+        private Random random;
 
         public MainWindow()
         {
             InitializeComponent();
-            InitializeMusic();
 
-            Results = ResultManager.LoadResultsFromFile();
+            ResultsList = Result.DeserializeResults();
+            GameExist = false;
 
             localSettings = new LocalSettings();
             localSettings.LoadFromRegistry();
-            menu = new MainMenu(this, localSettings);
-            MainFrame.Navigate(menu);
+            menu = new MainMenu(this);
+            MainBorder.Child = menu;
 
+            random = new Random((int)DateTime.Now.Ticks);
+            audioResources = new List<string> { Directory.GetCurrentDirectory() + "\\Sounds\\aerhead-shizuka.mp3" };
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
+            PlayRandomAudio();
 
             //Properties.Resources.ResourceManager.;
 
@@ -64,25 +70,6 @@ namespace MEMORY
             //    File.Delete(tempFilePath);
             //};
         }
-
-        private void InitializeMusic()
-        {
-            mediaPlayer = new MediaPlayer();
-            mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
-
-            // Список ресурсов с аудиофайлами
-            audioResources = new List<string>
-            {
-                "aerhead-shizuka.wav",
-                "barradeen-boku-no-love.wav",
-                "ghostrifter-morning-routine.wav"
-            };
-
-            random = new Random();
-
-            // Начать воспроизведение случайного трека
-            PlayRandomAudio();
-        }
         private void PlayRandomAudio()
         {
             if (audioResources.Count == 0)
@@ -93,28 +80,43 @@ namespace MEMORY
             string audioResource = audioResources[index];
 
             // Загрузка и воспроизведение трека
-            mediaPlayer.Open(new Uri($"pack://application:,,,/YourAssemblyName;component/Resources/{audioResource[index]}", UriKind.Absolute));
+            mediaPlayer.Volume = localSettings.MusicVolume / 100.0;
+            mediaPlayer.Open(new Uri(audioResource));
             mediaPlayer.Play();
         }
-
+        public void RedactVolumnMusic()
+        {
+            mediaPlayer.Volume = localSettings.MusicVolume / 100.0;
+        }
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)
         {
             // Когда трек заканчивается, воспроизводим следующий случайный трек
             PlayRandomAudio();
         }
-
+        public void AddResult(Result result)
+        {
+            ResultsList.Add(result);
+            Result.SerializeResults(ResultsList);
+        }
         public void StartNewGame(GameState gameState)
         {
-            currentGame = new MainGame(gameState, Skins.ProgrammingLanguages);
-            MainFrame.Navigate(currentGame);
+            currentGame = new MainGame(gameState, menu ,this);
+            if(GameExist)
+                MainBorder.Child = currentGame;
+        }
+        public void EndGame()
+        {
+            currentGame = null;
+            GameExist = false;
+            BackMenu();
         }
         public void ContinueGame()
         {
-            MainFrame.Navigate(currentGame);
+            MainBorder.Child = currentGame;
         }
         public void BackMenu()
         {
-            MainFrame.Navigate(menu);
+            MainBorder.Child = menu;
         }
         public void Test()
         {

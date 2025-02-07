@@ -9,6 +9,6 @@
         WindowState ="Maximized"
         Background="{DynamicResource MainMenuBackground}">
     <Grid>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        <Border x:Name="MainBorder"/>
     </Grid>
 </Window>

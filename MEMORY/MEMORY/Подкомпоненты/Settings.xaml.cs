@@ -19,18 +19,22 @@ namespace MEMORY
     /// <summary>
     /// Логика взаимодействия для Settings.xaml
     /// </summary>
-    public partial class Settings : Page
+    public partial class Settings : UserControl
     {
         //настройки сохраняются в файл, при загрузке берутся там же
         private string settingsFilePath = "settings.txt";
         private Themes _firstTheme;
+        private MainWindow _mainWindow;
+        private MainMenu _menu;
         private LocalSettings _settings;
-        public Settings(LocalSettings localSettings)
+        public Settings(MainWindow mainWindow, MainMenu mainMenu)
         {
             InitializeComponent();
-            _settings = localSettings;
+            _settings = mainWindow.localSettings;
             VolumeMusikSlider.Value = _settings.MusicVolume;
             VolumeSlider.Value = _settings.SoundVolume;
+            _mainWindow = mainWindow;
+            _menu = mainMenu;
             LoadThemes();
         }
 
@@ -63,10 +67,11 @@ namespace MEMORY
         private void ApplySettingsButton_Click(object sender, RoutedEventArgs e)
         {
             SaveSettings();
+            _mainWindow.RedactVolumnMusic();
         }
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            _menu.ShowResults();
         }
     }
 }
